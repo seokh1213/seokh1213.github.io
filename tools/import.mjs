@@ -1,0 +1,60 @@
+import './env.mjs'
+import { LiveExporter, toKebabCase } from '@inkdropapp/live-export'
+import yaml from 'js-yaml'
+
+const { INKDROP_USERNAME, INKDROP_PASSWORD, INKDROP_PORT, INKDROP_BOOKID } =
+  process.env
+
+const liveExport = new LiveExporter({
+  username: INKDROP_USERNAME,
+  password: INKDROP_PASSWORD,
+  port: Number(INKDROP_PORT)
+})
+
+const basePath = `./src/pages/posts`
+const publicPath = `./public/posts`
+
+await liveExport.start({
+  live: true,
+  bookId: INKDROP_BOOKID,
+  preProcessNote: ({ note, frontmatter, tags }) => {
+    frontmatter.layout = '../../layouts/BlogPost.astro'
+    frontmatter.title = note.title
+    frontmatter.createdAt = note.createdAt
+    frontmatter.updatedAt = note.updatedAt
+    frontmatter.tags = tags.map(t => ({name:t.name, color: t.color }))
+    frontmatter.public = true;
+    if (!frontmatter.slug) frontmatter.slug = toKebabCase(note.title)
+  },
+  pathForNote: ({ frontmatter }) => {
+    if (frontmatter.public) {
+      return `${basePath}/${frontmatter.slug}.md`
+    } else return false
+  },
+  urlForNote: ({ note, frontmatter }) => {
+    if (frontmatter.public) {
+      if (!frontmatter.slug) frontmatter.slug = toKebabCase(note.title)
+      return `/posts/${frontmatter.slug}`
+    } else return false
+  },
+  pathForFile: ({ mdastNode, extension, frontmatter, note, file }) => {
+    if (mdastNode.alt) {
+      const fn = `${frontmatter.slug}_${toKebabCase(mdastNode.alt)}${extension}`
+      const res = {
+        filePath: `${publicPath}/${fn}`,
+        url: `/posts/${fn}`
+      }
+
+      if (mdastNode.alt === 'thumbnail') {
+        frontmatter.heroImage = res.url
+      }
+      return res
+    } else return false
+  },
+  postProcessNote: ({ md:original_md, frontmatter }) => {
+    // Remove the thumbnail from the note body
+    const md = original_md.replace(/\!\[thumbnail\]\(.*\)\n/, '')
+    const metaData = `---\n${yaml.dump(frontmatter)}---\n`
+    return metaData + md
+  }
+})
