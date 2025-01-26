@@ -75,20 +75,20 @@ html.dark {
   transition: all 0.3s ease-out;
 }
 
-.dark .github-mark {
+.dark .about-logo {
   transition: all 0.3s ease-out;
 }
 
-a:hover .github-mark {
-  content: url('/assets/images/github-mark.png');
+a:hover .about-logo {
+  content: url('/assets/images/favicon.png');
 }
 
-.dark .github-mark {
-  content: url('/assets/images/github-mark.png');
+.dark .about-logo {
+  content: url('/assets/images/favicon.png');
 }
 
-.dark a:hover .github-mark {
-  content: url('/assets/images/github-mark-white.png');
+.dark a:hover .about-logo {
+  content: url('/assets/images/favicon-white.png');
 }
 
 .dark img.logo {
