@@ -1,364 +1,308 @@
 {
-    "basics": {
-      "name": "John Doe",
-      "label": "Junior Full Stack Developer",
-      "image": "/seokh1213-crop.jpg",
-      "email": "john.doe@example.com",
-      "phone": "+1 555-555-5555",
-      "url": "https://johndoe.dev",
-      "summary": "Junior Full Stack Developer with a passion for building web applications. Currently seeking opportunities to further develop my skills in a professional setting.",
-      "theme": "default",
-      "location": {
-        "address": "",
-        "postalCode": "10001",
-        "city": "Auckland",
-        "countryCode": "NZ",
-        "region": "New Zealand"
-      },
-      "profiles": [
-        {
-          "network": "LinkedIn",
-          "username": "john-doe",
-          "url": "https://linkedin.com/in/john-doe"
-        },
-        {
-          "network": "X",
-          "username": "john-doe",
-          "url": "https://x.com/john-doe"
-        },
-        {
-          "network": "GitHub",
-          "username": "johndoe",
-          "url": "https://github.com/johndoe"
-        }
-      ]
+  "basics": {
+    "name": "홍석현",
+    "label": "주니어 서버 개발자",
+    "image": "/seokh1213-crop.jpg",
+    "email": "seokh1213@gmail.com",
+    "url": "https://seokh1213.github.io",
+    "summary": "안녕하세요! \uD83D\uDC4B 코틀린, 자바, 스프링을 주로 다루는 주니어 서버 개발자입니다. 새로운 기술에 대한 호기심이 많아 이것저것 실험해보는 걸 좋아하고, 토니 스타크처럼 멋진 엔지니어가 되기 위해 열심히 달리고 있습니다! \uD83D\uDE80",
+    "theme": "default",
+    "location": {
+      "city": "Seoul",
+      "countryCode": "KO",
+      "region": "Republic of Korea"
     },
-    "work": [
+    "profiles": [
       {
-        "name": "Tech Startup",
-        "position": "Junior Web Developer",
-        "location_type": "On site",
-        "location": "Auckland, New Zealand",
-        "url": "https://techstartup.com",
-        "startDate": "2024-01-01",
-        "endDate": null,
-        "summary": "Developing and maintaining web applications using JavaScript, HTML, and CSS. Collaborating with the team to implement new features and fix bugs.",
-        "highlights": [
-          "Improved website performance by optimizing code"
-        ],
-        "responsibilities": [
-          "Collaborated with senior developers to design and implement web applications using modern JavaScript frameworks.",
-          "Assisted in debugging and optimizing front-end code to ensure smooth user experiences.",
-          "Participated in code reviews and contributed to improving coding standards within the team."
-        ],
-        "achievements": [
-          "Developing and maintaining web applications using JavaScript, HTML, and CSS. Collaborating with the team to implement new features and fix bugs."
-        ],
-        "skills": [
-          "React",
-          "Tailwind",
-          "GitHub"
-        ]
+        "network": "LinkedIn",
+        "username": "seokh1213",
+        "url": "https://linkedin.com/in/seokh1213"
       },
       {
-        "name": "Innovative Solutions",
-        "position": "Junior Software Developer",
-        "location_type": "Hybrid",
-        "location": "Wellington, New Zealand",
-        "url": "https://innovativesolutions.com",
-        "startDate": "2022-06-01",
-        "endDate": "2023-06-01",
-        "summary": "Assisting in the development and maintenance of software applications using Python and Django. Collaborating with cross-functional teams to ensure quality and timely delivery of software solutions.",
-        "highlights": [
-          "Contributed to a major project that streamlined internal workflows, improving efficiency by 30%"
-        ],
-        "responsibilities": [
-          "Developed and maintained backend services using Python and Django.",
-          "Worked closely with front-end developers to integrate user-facing elements with server-side logic.",
-          "Participated in daily stand-ups and bi-weekly sprint planning meetings to ensure alignment with project goals."
-        ],
-        "achievements": [
-          "Successfully implemented a feature that enhanced user authentication, improving security measures."
-        ],
-        "skills": [
-          "Python",
-          "Django",
-          "SQL",
-          "Git"
-        ]
-      },
-      {
-        "name": "Web Agency",
-        "position": "Intern Web Developer",
-        "location_type": "Remote",
-        "location": "Sydney, Australia",
-        "startDate": "2022-06-01",
-        "endDate": "2022-12-01",
-        "summary": "Assisted in developing client websites and applications. Gained hands-on experience with front-end and back-end technologies.",
-        "highlights": [
-          "Completed several client projects successfully"
-        ],
-        "skills": [
-          "HTML",
-          "CSS"
-        ]
-      }
-    ],
-    "volunteer": [
-      {
-        "organization": "Local Coding Club",
-        "position": "Volunteer",
-        "url": "https://codingclub.com/",
-        "startDate": "2021-01-01",
-        "endDate": "2022-01-01",
-        "summary": "Helped organize coding workshops and mentored new members.",
-        "highlights": [
-          "Awarded 'Volunteer of the Month'"
-        ]
-      }
-    ],
-    "education": [
-      {
-        "institution": "State University",
-        "url": "https://stateuniversity.edu",
-        "area": "Computer Science",
-        "studyType": "Bachelor",
-        "startDate": "2018-09-01",
-        "endDate": "2022-05-01",
-        "score": "3.8",
-        "courses": [
-          "CS101 - Introduction to Computer Science",
-          "CS102 - Data Structures"
-        ]
-      },
-      {
-        "institution": "Tech Institute",
-        "url": "https://techinstitute.edu",
-        "area": "Software Engineering",
-        "studyType": "Master",
-        "startDate": "2020-09-01",
-        "endDate": "2022-12-01",
-        "score": "3.9",
-        "courses": [
-          "SE201 - Advanced Software Development",
-          "SE202 - Software Architecture and Design"
-        ]
-      },
-      {
-        "institution": "City College",
-        "url": "https://citycollege.edu",
-        "area": "Information Technology",
-        "studyType": "Associate Degree",
-        "startDate": "2017-01-01",
-        "endDate": "2019-12-01",
-        "score": "3.7",
-        "courses": [
-          "IT101 - Networking Fundamentals",
-          "IT102 - Database Management Systems"
-        ]
-      }
-    ],
-    "certificates": [
-      {
-        "name": "Full Stack Web Development",
-        "date": "2023-05-01",
-        "issuer": "Online University",
-        "url": "https://onlineuniversity.com/certificates/fullstack"
-      }
-    ],
-    "skills": [
-      {
-        "name": "Figma",
-        "level": "Expert",
-        "keywords": [
-          "Design",
-          "UI"
-        ]
-      },
-      {
-        "name": "Gitlab",
-        "level": "Intermediate",
-        "keywords": [
-          "Version Control",
-          "Collaboration",
-          "Source Code"
-        ]
-      },
-      {
-        "name": "HTML",
-        "level": "Intermediate",
-        "keywords": [
-          "Web Development",
-          "Frontend"
-        ]
-      },
-      {
-        "name": "CSS",
-        "level": "Intermediate",
-        "keywords": [
-          "Web Development",
-          "Frontend",
-          "Responsive Design"
-        ]
-      },
-      {
-        "name": "JavaScript",
-        "level": "Intermediate",
-        "keywords": [
-          "Web Development",
-          "Frontend",
-          "Backend",
-          "Fullstack"
-        ]
-      },
-      {
-        "name": "Tailwind",
-        "level": "Intermediate",
-        "keywords": [
-          "Web Development",
-          "Frontend",
-          "CSS Framework",
-          "Responsive Design"
-        ]
-      },
-      {
-        "name": "TypeScript",
-        "level": "Intermediate",
-        "keywords": [
-          "Web Development",
-          "Frontend",
-          "Backend",
-          "JavaScript Superset"
-        ]
-      },
-      {
-        "name": "Node",
-        "level": "Intermediate",
-        "keywords": [
-          "Web Development",
-          "Backend",
-          "JavaScript",
-          "Server"
-        ]
-      },
-      {
-        "name": "MySQL",
-        "level": "Intermediate",
-        "keywords": [
-          "Databases",
-          "SQL",
-          "Data Storage",
-          "Backend"
-        ]
-      },
-      {
-        "name": "Git",
-        "level": "Intermediate",
-        "keywords": [
-          "Version Control",
-          "Collaboration",
-          "Source Code"
-        ]
-      },
-      {
-        "name": "GitHub",
-        "level": "Intermediate",
-        "keywords": [
-          "Version Control",
-          "Collaboration",
-          "Source Code",
-          "Git"
-        ]
-      },
-      {
-        "name": "Next.js",
-        "level": "Beginner",
-        "keywords": [
-          "Web Development",
-          "Frontend",
-          "React Framework",
-          "SSR",
-          "Static Generation"
-        ]
-      },
-      {
-        "name": "React",
-        "level": "Intermediate",
-        "keywords": [
-          "Web Development",
-          "Frontend",
-          "JavaScript Library",
-          "UI"
-        ]
-      }
-    ],
-    "languages": [
-      {
-        "language": "English",
-        "fluency": "Native speaker"
-      },
-      {
-        "language": "Spanish",
-        "fluency": "Intermediate"
-      }
-    ],
-    "interests": [
-      {
-        "name": "Technology",
-        "keywords": [
-          "AI",
-          "Blockchain"
-        ]
-      }
-    ],
-    "references": [
-      {
-        "name": "Jane Smith",
-        "reference": "Reference…"
-      }
-    ],
-    "projects": [
-      {
-        "name": "Personal Portfolio",
-        "isActive": false,
-        "description": "A personal portfolio website to showcase my projects and skills.",
-        "highlights": [
-          "Built with React and Tailwind CSS",
-          "Includes a blog and contact form"
-        ],
-        "url": "https://johndoe.dev",
-        "github": "https://github.com"
-      },
-      {
-        "name": "Weather App",
-        "isActive": true,
-        "description": "A web application that provides weather information for any location.",
-        "highlights": [
-          "Built with JavaScript and OpenWeatherMap API",
-          "Responsive design"
-        ],
-        "url": "https://weatherapp.com"
-      },
-      {
-        "name": "Task Manager",
-        "isActive": true,
-        "description": "A simple task management app to keep track of daily tasks.",
-        "highlights": [
-          "Built with Node.js and MongoDB",
-          "User authentication and CRUD operations"
-        ],
-        "url": "https://taskmanager.com",
-        "github": "https://github.com"
-      },
-      {
-        "name": "E-commerce Site",
-        "isActive": false,
-        "description": "An online store built with Next.js and Stripe for payment processing.",
-        "highlights": [
-          "Product management and shopping cart functionality",
-          "Secure payment integration"
-        ],
-        "url": "https://ecommerce.com"
+        "network": "GitHub",
+        "username": "seokh1213",
+        "url": "https://github.com/seokh1213"
       }
     ]
-  }
+  },
+  "work": [
+    {
+      "name": "카카오엔터테인먼트",
+      "position": "백엔드 개발자",
+      "location_type": "On site",
+      "location": "경기도 성남시 판교",
+      "url": "https://kakaoent.com/",
+      "startDate": "2021-12-01",
+      "endDate": null,
+      "summary": "카카오페이지 서비스의 백엔드 개발을 담당하고 있습니다. 새로운 기술을 도입하고, 서비스의 안정성을 높이기 위해 노력하고 있습니다.",
+      "responsibilities": [
+        "카카오페이지의 계정 및 인증 시스템 개발 및 유지보수",
+        "검색 및 콘텐츠 서빙 시스템 최적화 및 성능 개선",
+        "Gateway 모듈 개발 및 API 트래픽 처리 최적화",
+        "Spring 기반의 신규 기능 개발 및 기존 시스템 리팩토링",
+        "ElasticSearch를 활용한 검색 기능 개선 및 고도화"
+      ],
+      "achievements": [
+        "Gateway 모듈 최적화를 통해 API 응답 속도를 30% 단축",
+        "ElasticSearch 기반 검색 기능 개선으로 검색 정확도 향상",
+        "MySQL 및 Redis 튜닝을 통해 데이터 처리 성능 20% 향상",
+        "CI/CD 자동화를 통한 배포 효율성 및 안정성 강화"
+      ],
+      "skills": [
+        "Kotlin",
+        "Java",
+        "Spring",
+        "MySQL",
+        "Redis",
+        "ElasticSearch",
+        "MongoDB",
+        "GitHub"
+      ]
+    },
+    {
+      "name": "Naver AI Rush",
+      "position": "Naver AI Rush 2020",
+      "location_type": "Hybrid",
+      "location": "경기도 성남시 정자",
+      "url": "https://airush.ncloud.com/",
+      "startDate": "2020-07-13",
+      "endDate": "2020-08-27",
+      "summary": "Naver AI Rush 2020 수료 - 대회에 참가하여 computer vision 분야에서 마지막 라운드까지 참가하였습니다. pytorch를 이용해서 네이버 쇼핑 댓글 리뷰 이미지 분류 모델을 개선 진행 했습니다.",
+      "skills": [
+        "Python",
+        "PyTorch"
+      ]
+    },
+    {
+      "name": "소프트웨어마에스트로",
+      "position": "소프트웨어마에스트로 8기",
+      "location_type": "On site",
+      "location": "서울특별시 강남구 아남타워빌딩",
+      "url": "https://www.swmaestro.org/sw/main/main.do",
+      "startDate": "2017-08-01",
+      "endDate": "2017-12-31",
+      "summary": "소프트웨어마에스트로 8기 수료 - 2017년 8월부터 12월까지 5개월간 진행된 소프트웨어마에스트로 8기 교육과정을 수료하였습니다. python, android를 이용해 영어 발음 교정 프로잭트를 진행 했습니다.",
+      "skills": [
+        "Python",
+        "Android"
+      ]
+    }
+  ],
+  "education": [
+    {
+      "institution": "숭실대학교",
+      "url": "https://ssu.ac.kr/",
+      "area": "소프트웨어학부",
+      "studyType": "4년제",
+      "startDate": "2016-03-02",
+      "endDate": "2021-08-19",
+      "score": "3.7 / 134.5"
+    }
+  ],
+  "certificates": [
+    {
+      "name": "정보처리산업기사",
+      "date": "2019-12-02",
+      "issuer": "과학기술정보통신부-한국산업인력공단",
+      "url": "https://www.q-net.or.kr/crf005.do?id=crf00503&jmCd=2290"
+    }
+  ],
+  "skills": [
+    {
+      "name": "Kotlin",
+      "level": "中",
+      "keywords": [
+        "Kotlin"
+      ]
+    },
+    {
+      "name": "Java",
+      "level": "中",
+      "keywords": [
+        "Java"
+      ]
+    },
+    {
+      "name": "MySQL",
+      "level": "中",
+      "keywords": [
+        "Databases",
+        "SQL",
+        "Data Storage",
+        "Backend"
+      ]
+    },
+    {
+      "name": "Redis",
+      "level": "中",
+      "keywords": [
+        "Databases",
+        "SQL",
+        "Data Storage",
+        "Backend"
+      ]
+    },
+    {
+      "name": "ElasticSearch",
+      "level": "中",
+      "keywords": [
+        "Databases",
+        "SQL",
+        "Data Storage",
+        "Backend"
+      ]
+    },
+    {
+      "name": "MongoDB",
+      "level": "中",
+      "keywords": [
+        "Databases",
+        "SQL",
+        "Data Storage",
+        "Backend"
+      ]
+    },
+    {
+      "name": "Spring",
+      "level": "中",
+      "keywords": [
+        "Databases",
+        "SQL",
+        "Data Storage",
+        "Backend"
+      ]
+    },
+    {
+      "name": "HTML",
+      "level": "下",
+      "keywords": [
+        "Web Development",
+        "Frontend"
+      ]
+    },
+    {
+      "name": "CSS",
+      "level": "下",
+      "keywords": [
+        "Web Development",
+        "Frontend",
+        "Responsive Design"
+      ]
+    },
+    {
+      "name": "JavaScript",
+      "level": "下",
+      "keywords": [
+        "Web Development",
+        "Frontend",
+        "Backend",
+        "Fullstack"
+      ]
+    },
+    {
+      "name": "Tailwind",
+      "level": "下",
+      "keywords": [
+        "Web Development",
+        "Frontend",
+        "CSS Framework",
+        "Responsive Design"
+      ]
+    },
+    {
+      "name": "TypeScript",
+      "level": "下",
+      "keywords": [
+        "Web Development",
+        "Frontend",
+        "Backend",
+        "JavaScript Superset"
+      ]
+    },
+    {
+      "name": "React",
+      "level": "下",
+      "keywords": [
+        "Web Development",
+        "Frontend",
+        "JavaScript Library",
+        "UI"
+      ]
+    },
+    {
+      "name": "Node",
+      "level": "下",
+      "keywords": [
+        "Web Development",
+        "Backend",
+        "JavaScript",
+        "Server"
+      ]
+    },
+    {
+      "name": "Python",
+      "level": "下",
+      "keywords": [
+        "Web Development",
+        "Backend",
+        "JavaScript",
+        "Server"
+      ]
+    },
+    {
+      "name": "Git",
+      "level": "中",
+      "keywords": [
+        "Version Control",
+        "Collaboration",
+        "Source Code"
+      ]
+    },
+    {
+      "name": "GitHub",
+      "level": "中",
+      "keywords": [
+        "Version Control",
+        "Collaboration",
+        "Source Code"
+      ]
+    }
+  ],
+  "languages": [
+    {
+      "language": "English",
+      "fluency": "Native speaker"
+    },
+    {
+      "language": "Spanish",
+      "fluency": "中"
+    }
+  ],
+  "interests": [
+    {
+      "name": "Technology",
+      "keywords": [
+        "AI",
+        "Blockchain"
+      ]
+    }
+  ],
+  "references": [
+    {
+      "name": "Jane Smith",
+      "reference": "Reference…"
+    }
+  ],
+  "projects": [
+    {
+      "name": "Lol Cooldown",
+      "isActive": true,
+      "description": "롤 챔피언 스킬 쿨 타임 표시기",
+      "highlights": [
+        "React.js & Styled Components"
+      ],
+      "url": "https://seokh1213.github.io/cooldown",
+      "github": "https://github.com/seokh1213/cooldown"
+    }
+  ]
+}

@@ -1,50 +1,41 @@
 ---
-import experiences from "../collections/experiences.json";
-import AboutExperience from "../components/about-experience.astro";
-import PageHeading from "../components/page-heading.astro";
-
 import Layout from "@/layouts/about-layout.astro";
 
-import About from "@/components/sections/about.astro";
+import AboutSection from "@/components/sections/about.astro";
 import Education from "@/components/sections/education.astro";
 import Experience from "@/components/sections/experience.astro";
 import Hero from "@/components/sections/hero.astro";
 import Projects from "@/components/sections/projects.astro";
 import Skills from "@/components/sections/skills.astro";
-import Tail from "@/components/sections/tail.astro";
-import KeyboardManager from "@/components/keyboardManager.astro";
-import ThemeSwitch from "@/components/themeSwitch.astro";
 
-import { basics } from "@cv";
-const { name, label } = basics;
+import {basics} from "@cv";
+const {name, label} = basics;
 ---
 
-<Layout title={`${name} Portafolio - ${label}`}>
-	<main class="relative grid max-w-7xl gap-12 p-8 max-sm:py-16 md:grid-cols-6 md:p-16 xl:gap-24 print:max-w-none print:grid-cols-1 print:gap-6">
-		<div class="space-y-6 md:col-span-2 print:col-span-1 print:grid print:grid-cols-2 print:gap-5 print:space-y-0">
-			<Hero />
-			<About />
-			<ThemeSwitch />
-		</div>
-		<div class="space-y-12 md:col-span-4 print:col-span-1 print:grid print:grid-cols-4 print:gap-2 print:space-y-0">
-			<Experience className="print:col-span-3" />
-			<Projects className="print:hidden" />
-			<Skills className="print:hidden" />
-			<Education className="order-first" />
-		</div>
-		<Tail />
-	</main>
-
-	<KeyboardManager />
+<Layout title={`${name} Portfolio - ${label}`}>
+  <main
+    class="relative grid max-w-7xl gap-12 p-8 max-sm:py-16 md:grid-cols-6 md:p-16 xl:gap-24 print:max-w-none print:grid-cols-1 print:gap-6">
+    <div class="space-y-6 md:col-span-2 print:col-span-1 print:grid print:grid-cols-2 print:gap-5 print:space-y-0">
+      <Hero/>
+      <AboutSection/>
+    </div>
+    <div class="space-y-12 md:col-span-4 print:col-span-1 print:grid print:grid-cols-4 print:gap-2 print:space-y-0">
+      <Experience className="print:col-span-3"/>
+      <Projects className="print:hidden"/>
+      <Skills className="print:hidden"/>
+      <Education className="order-first"/>
+    </div>
+  </main>
 </Layout>
 
 <style>
-	@page {
-		size: auto;
-		margin: 0mm;
-	}
-	main {
-		margin: auto;
-		width: 100%;
-	}
+  @page {
+    size: auto;
+    margin: 0mm;
+  }
+
+  main {
+    margin: auto;
+    width: 100%;
+  }
 </style>

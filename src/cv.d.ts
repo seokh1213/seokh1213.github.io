@@ -18,7 +18,6 @@ export interface CV {
     label: string;
     image: string;
     email: string;
-    phone: string;
     url: string;
     summary: string;
     location: Location;
@@ -26,8 +25,6 @@ export interface CV {
   }
   
   interface Location {
-    address: string;
-    postalCode: string;
     city: string;
     countryCode: string;
     region: string;
