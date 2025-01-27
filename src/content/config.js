@@ -8,6 +8,7 @@ const postCollection = defineCollection({
     dateFormatted: z.string(),
     published: z.boolean(),
     tags: z.array(z.string()).optional().default([]),
+    category: z.string().optional().default("tech"),
   }),
 });
 
