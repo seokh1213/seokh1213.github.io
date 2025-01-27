@@ -43,9 +43,9 @@
         "ElasticSearch를 활용한 검색 기능 개선 및 고도화"
       ],
       "achievements": [
-        "Gateway 모듈 최적화를 통해 API 응답 속도를 30% 단축",
+        "Gateway 불필요 로직을 분리하여 서버 안정성 향상",
         "ElasticSearch 기반 검색 기능 개선으로 검색 정확도 향상",
-        "MySQL 및 Redis 튜닝을 통해 데이터 처리 성능 20% 향상",
+        "MySQL 및 Redis 튜닝을 통해 데이터 안정적으로 제공",
         "CI/CD 자동화를 통한 배포 효율성 및 안정성 강화"
       ],
       "skills": [
