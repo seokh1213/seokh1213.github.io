@@ -5,14 +5,31 @@ import Layout from "../layouts/main.astro";
 ---
 
 <Layout title="Posts">
-  <section class="relative z-20 max-w-2xl mx-auto my-12 px-7 lg:px-0">
-    <PageHeading
-      title="Posts"
-      description="기억을 위해 기록 해둡니다."
-    />
+  <div
+    class="flex flex-col lg:flex-row px-4 sm:px-6 md:px-8 max-w-screen-2xl mx-auto sm:min-h-[calc(100vh-249px)] min-h-[calc(100vh-205px)]">
+    <aside class="hidden lg:flex flex-col basis-full lg:basis-72 grow-0 shrink-0">
+      <svg
+        class="w-8 h-8 dark:text-neutral-200"
+        fill="none"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+        stroke="currentColor">
+        <path d="M4 8h16M4 16h16"></path>
+      </svg>
+      <ul>
+        <li>Programming</li>
+        <li>Programming2</li>
+        <li>Programming3</li>
+      </ul>
+    </aside>
+    <main class="flex-1 flex flex-col">
+      <PostsLoop count="999999999"/>
+    </main>
 
-    <div class="z-50 flex flex-col items-stretch w-full gap-5 my-8">
-      <PostsLoop count="999999999" />
-    </div>
-  </section>
+    <section class="relative z-20 max-w-2xl mx-auto my-12 px-7 lg:px-0">
+
+    </section>
+  </div>
 </Layout>
