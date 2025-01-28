@@ -58,34 +58,6 @@
         "MongoDB",
         "GitHub"
       ]
-    },
-    {
-      "name": "Naver AI Rush",
-      "position": "Naver AI Rush 2020",
-      "location_type": "Hybrid",
-      "location": "경기도 성남시 정자",
-      "url": "https://airush.ncloud.com/",
-      "startDate": "2020-07-13",
-      "endDate": "2020-08-27",
-      "summary": "Naver AI Rush 2020 수료 - 대회에 참가하여 computer vision 분야에서 마지막 라운드까지 참가하였습니다. pytorch를 이용해서 네이버 쇼핑 댓글 리뷰 이미지 분류 모델을 개선 진행 했습니다.",
-      "skills": [
-        "Python",
-        "PyTorch"
-      ]
-    },
-    {
-      "name": "소프트웨어마에스트로",
-      "position": "소프트웨어마에스트로 8기",
-      "location_type": "On site",
-      "location": "서울특별시 강남구 아남타워빌딩",
-      "url": "https://www.swmaestro.org/sw/main/main.do",
-      "startDate": "2017-08-01",
-      "endDate": "2017-12-31",
-      "summary": "소프트웨어마에스트로 8기 수료 - 2017년 8월부터 12월까지 5개월간 진행된 소프트웨어마에스트로 8기 교육과정을 수료하였습니다. python, android를 이용해 영어 발음 교정 프로잭트를 진행 했습니다.",
-      "skills": [
-        "Python",
-        "Android"
-      ]
     }
   ],
   "education": [
@@ -97,6 +69,18 @@
       "startDate": "2016-03-02",
       "endDate": "2021-08-19",
       "score": "3.7 / 134.5"
+    },
+    {
+      "institution": "Naver AI Rush 2020",
+      "url": "https://airush.ncloud.com/",
+      "startDate": "2020-07-13",
+      "endDate": "2020-08-27"
+    },
+    {
+      "institution": "소프트웨어마에스트로 8기",
+      "url": "https://www.swmaestro.org/sw/main/main.do",
+      "startDate": "2017-08-01",
+      "endDate": "2017-12-31"
     }
   ],
   "certificates": [
@@ -304,5 +288,32 @@
       "url": "https://seokh1213.github.io/cooldown",
       "github": "https://github.com/seokh1213/cooldown"
     }
-  ]
+  ],
+  "Locale": "",
+  "Technical Skills": [],
+  "Templates": [],
+  "Courses": [],
+  "Languages": [],
+  "Variables": {},
+  "Other Facts": [],
+  "Target Job": {},
+  "Education": [],
+  "Job Status": "active search",
+  "Personal": {},
+  "Bio":,
+  "Residence": {},
+  "Labels": [],
+  "Top Skills": [],
+  "Titles": [],
+  "Contact": [],
+  "Experience": [],
+  "Volunteering": [],
+  "Common Skills": [],
+  "Achievements": [],
+  "References": [],
+  "Last Update":,
+  "Personal Projects": [],
+  "Links": [],
+  "Resources": [],
+  "Goals": []
 }
