@@ -48,6 +48,15 @@ const { image, summary, url, theme } = basics;
           document.documentElement.classList.add("dark");
         }
       }
+
+      window.applyMenuItemClasses = () => {
+        const menuItems = document.querySelectorAll("#menu a");
+        for (let i = 0; i < menuItems.length; i++) {
+          if (menuItems[i].pathname === window.location.pathname) {
+            menuItems[i].classList.add("text-neutral-900", "dark:text-white");
+          }
+        }
+      }
     </script>
 
     <style>
