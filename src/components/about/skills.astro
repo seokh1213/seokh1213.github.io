@@ -1,7 +1,7 @@
 ---
-import Section from "@/components/section.astro";
+import Section from "@/components/about/section.astro";
+import SkillIcons from "@/components/about/skill-icons";
 import {skills} from "@cv";
-import SKILLS_ICONS from "./skill-icons.js";
 ---
 
 <Section className={Astro.props.className} title="Skills">
@@ -11,7 +11,7 @@ import SKILLS_ICONS from "./skill-icons.js";
     {
       skills.map(({name}) => {
         const iconName = name === "Next.js" ? "Next" : name;
-        const Icon = SKILLS_ICONS[iconName];
+        const Icon = SkillIcons[iconName];
 
         return (
           <li
