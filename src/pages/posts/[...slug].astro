@@ -1,7 +1,7 @@
 ---
 // pages/posts/[...slug].astro
-import { getCollection, render } from "astro:content";
-import Layout from "../../layouts/main.astro";
+import {getCollection, render} from "astro:content";
+import Layout from "@/layouts/main.astro";
 import FolderStructure from "@/components/folder-structure.astro";
 
 export async function getStaticPaths() {
@@ -9,17 +9,17 @@ export async function getStaticPaths() {
 
   return [
     // index 페이지용 경로
-    { params: { slug: undefined } },
+    {params: {slug: undefined}},
     // 각 포스트용 경로들
     ...posts.map((post) => ({
-      params: { slug: post.id },
-      props: { post },
+      params: {slug: post.id},
+      props: {post},
     })),
   ];
 }
 
-const { post } = Astro.props;
-const { slug } = Astro.params;
+const {post} = Astro.props;
+const {slug} = Astro.params;
 const posts = await getCollection("post");
 
 // 폴더 구조 변환 함수
@@ -27,7 +27,7 @@ function generateFolderStructure(posts) {
   const structure = [];
 
   posts.forEach((post) => {
-    const { id } = post;
+    const {id} = post;
     const parts = id.split("/");
     let currentLevel = structure;
 
@@ -66,7 +66,7 @@ const currentPost = slug ? post : findIndexPost(posts);
 // 콘텐츠 처리
 let Content = undefined;
 if (currentPost) {
-  const { Content: PostContent } = await render(currentPost);
+  const {Content: PostContent} = await render(currentPost);
   Content = PostContent;
 }
 ---
@@ -94,7 +94,7 @@ if (currentPost) {
         data-testid="toc-scroll-container"
         class="flex flex-grow flex-col p-2 lg:pb-20 overflow-y-auto"
       >
-        <FolderStructure items={structuredData} />
+        <FolderStructure items={structuredData}/>
       </div>
     </aside>
 
@@ -103,7 +103,8 @@ if (currentPost) {
       {
         currentPost && (
           <article class="prose dark:prose-invert max-w-none">
-            {Content && <Content />}
+            {Content &&
+              <Content/>}
           </article>
         )
       }

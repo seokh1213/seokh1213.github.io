@@ -1,14 +1,14 @@
 ---
-import Section from "../section.astro";
+import Section from "@/components/section.astro";
 
-import { education } from "@cv";
-import { certificates } from "@cv";
+import {education} from "@cv";
+import {certificates} from "@cv";
 ---
 
 <Section className={Astro.props.className} title="Education">
   <ul class="space-y-4 py-3 print:space-y-0">
     {
-      education.map(({ institution, startDate, endDate, area, url }) => {
+      education.map(({institution, startDate, endDate, area, url}) => {
         const startYear = new Date(startDate).getFullYear();
         const endYear =
           endDate != null ? new Date(endDate).getFullYear() : "Actual";
@@ -28,9 +28,10 @@ import { certificates } from "@cv";
               stroke-linejoin="round"
               class="mr-2 hidden h-5 w-5 self-start md:inline-block print:hidden"
             >
-              <path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z" />
-              <path d="M22 10v6" />
-              <path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5" />
+              <path
+                d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/>
+              <path d="M22 10v6"/>
+              <path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/>
             </svg>
             <div class="relative w-full items-baseline justify-between gap-2">
               <h3 class="mr-6 items-baseline gap-x-2 gap-y-0.5 font-medium">
@@ -58,7 +59,7 @@ import { certificates } from "@cv";
       <>
         <h4>Certificates</h4>
         <ul class="space-y-4 py-3 print:space-y-0">
-          {certificates.map(({ name, date, issuer, url }) => {
+          {certificates.map(({name, date, issuer, url}) => {
             const certificateYear = new Date(date).getFullYear();
             return (
               <div class="flex items-baseline">
@@ -74,10 +75,11 @@ import { certificates } from "@cv";
                   stroke-linejoin="round"
                   class="mr-2 hidden h-5 w-5 self-start md:inline-block print:hidden"
                 >
-                  <path d="M15 12h-5" />
-                  <path d="M15 8h-5" />
-                  <path d="M19 17V5a2 2 0 0 0-2-2H4" />
-                  <path d="M8 21h12a2 2 0 0 0 2-2v-1a1 1 0 0 0-1-1H11a1 1 0 0 0-1 1v1a2 2 0 1 1-4 0V5a2 2 0 1 0-4 0v2a1 1 0 0 0 1 1h3" />
+                  <path d="M15 12h-5"/>
+                  <path d="M15 8h-5"/>
+                  <path d="M19 17V5a2 2 0 0 0-2-2H4"/>
+                  <path
+                    d="M8 21h12a2 2 0 0 0 2-2v-1a1 1 0 0 0-1-1H11a1 1 0 0 0-1 1v1a2 2 0 1 1-4 0V5a2 2 0 1 0-4 0v2a1 1 0 0 0 1 1h3"/>
                 </svg>
                 <div class="relative w-full items-baseline justify-between gap-2">
                   <h3 class="mr-6 items-baseline gap-x-2 gap-y-0.5 font-medium">
