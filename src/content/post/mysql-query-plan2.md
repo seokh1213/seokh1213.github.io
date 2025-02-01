@@ -4,7 +4,7 @@ title: MySQL query plan
 description: MySQL query plan
 dateFormatted: Jan 28, 2025
 published: false
-tags: [ mysql, test ]
+tags: [mysql, test]
 ---
 
 > MySQL query plan

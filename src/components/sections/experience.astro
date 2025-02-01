@@ -16,8 +16,7 @@ import SKILLS_ICONS from "./skill-icons.js";
                  achievements,
                  url,
                  skills,
-                 location,
-                 location_type
+                 location
                }) => {
       const startYear = new Date(startDate).getFullYear()
       const endYear = endDate != null ? new Date(endDate).getFullYear() : "Present"
@@ -121,8 +120,6 @@ import SKILLS_ICONS from "./skill-icons.js";
                       <polyline points="6 9 12 15 18 9"></polyline>
                     </svg>
                   </button>
-
-
                 )}
                 <ul class="flex print:hidden flex-wrap gap-2" aria-label="Technologies used">
                   {skills && skills.map(skill => {
@@ -145,11 +142,12 @@ import SKILLS_ICONS from "./skill-icons.js";
     })}
   </ul>
 </Section>
-<script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+<script is:inline defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"/>
+<script is:inline defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"/>
 
 <style>
-li::marker {
-  @apply text-skin-hue
+  li::marker {
+    @apply text-skin-hue
   }
 </style>

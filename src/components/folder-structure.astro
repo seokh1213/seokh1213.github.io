@@ -1,10 +1,10 @@
 ---
-import type {Post, Content} from "@/types";
+import type { Post, Content } from "@/types";
 
 interface FolderItem {
   name: string;
   path: string | null;
-  post: Content<Post>
+  post: Content<Post>;
   children: FolderItem[];
 }
 
@@ -12,40 +12,44 @@ interface Props {
   items: FolderItem[];
 }
 
-const {items} = Astro.props;
+const { items } = Astro.props;
 ---
 
-<ul class="flex flex-col gap-y-0.5 sidebar-list-line:border-l border-dark/3 dark:border-light/2">
-  {items.map((item) => (
-    <li class="flex flex-col">
-      {item.children.length > 0 ? (
-        <details class="group">
-          <summary class="flex items-center gap-3 px-3 cursor-pointer">
-            {item.name}
-            <svg
-              class="w-4 h-4 transition-transform group-open:rotate-90"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
-              <path d="M9 18l6-6-6-6"/>
-            </svg>
-          </summary>
-          <div class="ml-5">
-            <Astro.self items={item.children}/>
-          </div>
-        </details>
-      ) : (
-        <a
-          href={item.path}
-          class="pl-3 text-sm text-dark/8 hover:text-dark/9 hover:bg-dark/1 dark:text-light/8 dark:hover:text-light/9 dark:hover:bg-light/1"
-        >
-          {item.post.data.title}
-        </a>
-      )}
-    </li>
-  ))}
+<ul
+  class="flex flex-col gap-y-0.5 sidebar-list-line:border-l border-dark/3 dark:border-light/2"
+>
+  {
+    items.map((item) => (
+      <li class="flex flex-col">
+        {item.children.length > 0 ? (
+          <details class="group">
+            <summary class="flex items-center gap-3 px-3 cursor-pointer">
+              {item.name}
+              <svg
+                class="w-4 h-4 transition-transform group-open:rotate-90"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M9 18l6-6-6-6" />
+              </svg>
+            </summary>
+            <div class="ml-5">
+              <Astro.self items={item.children} />
+            </div>
+          </details>
+        ) : (
+          <a
+            href={item.path}
+            class="pl-3 text-sm text-dark/8 hover:text-dark/9 hover:bg-dark/1 dark:text-light/8 dark:hover:text-light/9 dark:hover:bg-light/1"
+          >
+            {item.post.data.title}
+          </a>
+        )}
+      </li>
+    ))
+  }
 </ul>

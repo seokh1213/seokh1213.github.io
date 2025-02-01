@@ -49,7 +49,7 @@ const SKILLS_ICONS = {
   Spring,
   Python,
   PyTorch,
-  Android
+  Android,
 };
 
 export default SKILLS_ICONS;

@@ -1,6 +1,6 @@
 ---
 // pages/posts/[...slug].astro
-import {getCollection} from "astro:content";
+import { getCollection, render } from "astro:content";
 import Layout from "../../layouts/main.astro";
 import FolderStructure from "@/components/folder-structure.astro";
 
@@ -9,20 +9,17 @@ export async function getStaticPaths() {
 
   return [
     // index 페이지용 경로
-    {params: {slug: undefined}},
+    { params: { slug: undefined } },
     // 각 포스트용 경로들
     ...posts.map((post) => ({
-      params: {
-        // slug를 문자열로 처리
-        slug: post.slug
-      },
-      props: {post},
+      params: { slug: post.id },
+      props: { post },
     })),
   ];
 }
 
-const {post} = Astro.props;
-const {slug} = Astro.params;
+const { post } = Astro.props;
+const { slug } = Astro.params;
 const posts = await getCollection("post");
 
 // 폴더 구조 변환 함수
@@ -30,7 +27,7 @@ function generateFolderStructure(posts) {
   const structure = [];
 
   posts.forEach((post) => {
-    const {id, slug} = post;
+    const { id } = post;
     const parts = id.split("/");
     let currentLevel = structure;
 
@@ -39,9 +36,9 @@ function generateFolderStructure(posts) {
 
       if (!existing) {
         existing = {
-          name: part,
-          path: index === parts.length - 1 ? `/posts/${slug}` : null,
           post,
+          name: part,
+          path: index === parts.length - 1 ? `/posts/${id}` : null,
           children: [],
         };
         currentLevel.push(existing);
@@ -60,16 +57,16 @@ const structuredData = generateFolderStructure(posts);
 
 // index.md 찾기 함수
 function findIndexPost(posts) {
-  return posts.find((post) => post.slug === "index");
+  return posts.find((post) => post.id === "index");
 }
 
 // 현재 표시할 포스트 결정
 const currentPost = slug ? post : findIndexPost(posts);
 
 // 콘텐츠 처리
-let Content;
+let Content = undefined;
 if (currentPost) {
-  const {Content: PostContent} = await currentPost.render();
+  const { Content: PostContent } = await render(currentPost);
   Content = PostContent;
 }
 ---
@@ -79,7 +76,9 @@ if (currentPost) {
     class="flex flex-col lg:flex-row px-4 sm:px-6 md:px-8 max-w-screen-2xl mx-auto sm:min-h-[calc(100vh-249px)] min-h-[calc(100vh-205px)]"
   >
     <!-- 사이드바 -->
-    <aside class="hidden lg:flex flex-col basis-full lg:basis-72 grow-0 shrink-0">
+    <aside
+      class="hidden lg:flex flex-col basis-full lg:basis-72 grow-0 shrink-0"
+    >
       <svg
         class="w-8 h-8 dark:text-neutral-200"
         fill="none"
@@ -95,20 +94,22 @@ if (currentPost) {
         data-testid="toc-scroll-container"
         class="flex flex-grow flex-col p-2 lg:pb-20 overflow-y-auto"
       >
-        <FolderStructure items={structuredData}/>
+        <FolderStructure items={structuredData} />
       </div>
     </aside>
 
     <!-- 메인 콘텐츠 -->
     <main class="flex-1 flex flex-col">
-      {currentPost && (
-        <article class="prose dark:prose-invert max-w-none">
-          {Content &&
-            <Content/>}
-        </article>
-      )}
+      {
+        currentPost && (
+          <article class="prose dark:prose-invert max-w-none">
+            {Content && <Content />}
+          </article>
+        )
+      }
     </main>
 
-    <section class="relative z-20 max-w-2xl mx-auto my-12 px-7 lg:px-0"></section>
+    <section class="relative z-20 max-w-2xl mx-auto my-12 px-7 lg:px-0">
+    </section>
   </div>
 </Layout>
