@@ -122,13 +122,12 @@ function showNight(animate) {
 }
 
 window.applyMenuItemClasses = () => {
-  const menuItems = document.querySelectorAll("#menu a");
-  for (let i = 0; i < menuItems.length; i++) {
-    if (
-      window.location.pathname.startsWith(menuItems[i].pathname)
-    ) {
-      menuItems[i].classList.add("text-neutral-900", "dark:text-white");
-    }
+  const menuItems = Array.from(document.querySelectorAll("#menu a"));
+  const longPathMenu = menuItems.sort((a, b) => b.pathname.length - a.pathname.length)
+    .filter((item) => window.location.pathname.startsWith(item.pathname))?.[0]
+
+  if (longPathMenu) {
+    longPathMenu.classList.add("text-neutral-900", "dark:text-white");
   }
 };
 
