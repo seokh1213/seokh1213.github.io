@@ -1,10 +1,10 @@
 ---
 layout: ../../layouts/post.astro
-title: MySQL query plan
-description: MySQL query plan
-dateFormatted: Jan 28, 2025
+title: Intro
+description: Hello. This is seokh1213 blog.
+dateFormatted: Feb 02, 2025
 published: true
-tags: [mysql]
+tags: [ ]
 ---
 
 # index

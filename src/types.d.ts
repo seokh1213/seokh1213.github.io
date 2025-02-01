@@ -1,6 +1,7 @@
 export type SocialIcon = Record<string, string | any>;
 
 export interface Content<T> {
+  id: string;
   data: T;
 }
 

@@ -11,46 +11,65 @@ interface FolderItem {
 interface Props {
   items: FolderItem[];
   currentPost: Content<Partial<Post>>;
+  indexPost?: Content<Partial<Post>>
+  depth?: number;
 }
 
-const {items, currentPost} = Astro.props;
+const {items, currentPost, indexPost, depth = 1} = Astro.props;
+
+const sortedItems = items
+  .slice() // 원본 배열 보호
+  .sort((a, b) => {
+    // 단건(자식 없음, children.length === 0)과 폴더(자식 있음)를 구분
+    if (a.children.length === b.children.length) {
+      // 같은 그룹 내에서는 알파벳 순 정렬
+      // 단건은 item.post.data.title, 폴더는 item.name을 기준
+      const aLabel = a.children.length > 0 ? a.name : a.post.data.title;
+      const bLabel = b.children.length > 0 ? b.name : b.post.data.title;
+      return aLabel.localeCompare(bLabel);
+    }
+    // 단건이 폴더보다 앞에 오도록 정렬 (children.length가 0인 경우가 먼저)
+    return a.children.length - b.children.length;
+  });
 ---
 
 <ul
-  class="flex flex-col gap-y-0.5 sidebar-list-line:border-l border-dark/3 dark:border-light/2"
+  class=`flex flex-col sidebar-list-line:border-l border-dark/3 dark:border-light/2 gap-y-0.5
+    ${depth === 1 ? "p-6" : ""}
+  `
 >
   {
-    items.map((item) => (
-      <li class="flex flex-col">
-        {item.children.length > 0 ? (
-          <details class="group">
-            <summary class="flex items-center gap-3 px-3 cursor-pointer">
-              {item.name}
-              <svg
-                class="w-4 h-4 transition-transform group-open:rotate-90"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <path d="M9 18l6-6-6-6"/>
-              </svg>
-            </summary>
-            <div class="ml-5">
-              <Astro.self items={item.children} currentPost={currentPost}/>
-            </div>
-          </details>
-        ) : (
-          <a
-            href={item.path}
-            class="pl-3 text-sm text-dark/8 hover:text-dark/9 hover:bg-dark/1 dark:text-light/8 dark:hover:text-light/9 dark:hover:bg-light/1"
-          >
-            {item.post.data.title}
-          </a>
-        )}
+    indexPost && (
+      <li
+        class="flex flex-col hover:bg-skin-button-accent/20 p-1.5 pl-3 rounded-md text-[var(--secondary-text-color)] dark:text-[var(--secondary-text-color-dark)]">
+        <a
+          href={`/posts/${indexPost.id}`}
+          class="pl-3 text-sm text-dark/8 hover:text-dark/9 hover:bg-dark/1 dark:text-light/8 dark:hover:text-light/9 dark:hover:bg-light/1"
+        >
+          {indexPost.data.title}
+        </a>
       </li>
-    ))
+    )
   }
+  {sortedItems.map((item) => (
+    <li
+      class="flex flex-col hover:bg-skin-button-accent/20 p-1.5 pl-3 rounded-md text-[var(--secondary-text-color)] dark:text-[var(--secondary-text-color-dark)]">
+      {item.children.length > 0 ? (
+        <>
+          <div
+            class="p-3 pt-6 font-bold text-xs text-[var(--primary-text-color)] dark:text-[var(--primary-text-color-dark)]">
+            {item.name}
+          </div>
+          <Astro.self items={item.children} currentPost={currentPost} depth={depth + 1}/>
+        </>
+      ) : (
+        <a
+          href={item.path}
+          class="pl-3 text-sm text-dark/80 hover:text-dark/90 hover:bg-dark/5 dark:text-light/80 dark:hover:text-light/90 dark:hover:bg-light/5"
+        >
+          {item.post.data.title}
+        </a>
+      )}
+    </li>
+  ))}
 </ul>

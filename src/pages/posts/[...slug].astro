@@ -57,17 +57,11 @@ function generateFolderStructure(posts) {
   return structure;
 }
 
-const structuredData = generateFolderStructure(posts);
+const structuredData = generateFolderStructure(posts.filter((post) => post.id !== "index"));
+const indexPost = posts.find((post) => post.id === "index");
 
-// index.md 찾기 함수
-function findIndexPost(posts) {
-  return posts.find((post) => post.id === "index");
-}
+const currentPost = slug ? post : indexPost;
 
-// 현재 표시할 포스트 결정
-const currentPost = slug ? post : findIndexPost(posts);
-
-// 콘텐츠 처리
 let Content = undefined;
 if (currentPost) {
   const {Content: PostContent} = await render(currentPost);
@@ -78,8 +72,7 @@ if (currentPost) {
 <Layout title=`${nickname} - Posts`>
   <div
     class="flex flex-col lg:flex-row mx-auto sm:min-h-[calc(100vh-169px)] min-h-[calc(100vh-125px)]
-            border-t border-t-[var(--pattern-fg)]
-            dark:border-t-[var(--pattern-fg-dark)]
+            border-t border-neutral-200 dark:border-neutral-800
             bg-white
             dark:bg-neutral-950
     "
@@ -99,12 +92,11 @@ if (currentPost) {
       <!--&gt;-->
       <!--  <path d="M4 8h16M4 16h16"></path>-->
       <!--</svg>-->
-      <div
-        data-testid="toc-scroll-container"
-        class="flex flex-grow flex-col p-2 lg:pb-20 overflow-y-auto "
+      <nav
+        class="p-2 lg:pb-20 overflow-y-auto"
       >
-        <FolderStructure items={structuredData} currentPost={post}/>
-      </div>
+        <FolderStructure items={structuredData} currentPost={post} indexPost={indexPost}/>
+      </nav>
     </aside>
 
     <Separator/>
