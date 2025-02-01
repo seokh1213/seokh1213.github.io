@@ -1,18 +1,18 @@
 ---
 import {basics} from "@cv";
 import Section from "@/components/about/section.astro";
-import Mail from "@/icons/Mail.astro";
-import LinkedIn from "@/icons/LinkedIn.astro";
-import GitHub from "@/icons/GitHub.astro";
-import WorldMap from "@/icons/WorldMap.astro";
+import Mail from "@/icons/mail.astro";
+import Linkedin from "@/icons/linkedin.astro";
+import Github from "@/icons/github.astro";
+import Worldmap from "@/icons/worldmap.astro";
 import type {SocialIcon} from "@/types";
 
 const {name, label, image, location, profiles, email} = basics;
 const {city, region} = location;
 
 const SOCIAL_ICONS: SocialIcon = {
-  GitHub,
-  LinkedIn,
+  GitHub: Github,
+  LinkedIn: Linkedin,
 };
 ---
 
@@ -22,7 +22,7 @@ const SOCIAL_ICONS: SocialIcon = {
       <h1>{name}</h1>
       <h2>{label}</h2>
       <div class="flex items-center gap-2 pt-2 text-sm text-skin-muted">
-        <WorldMap/>
+        <Worldmap/>
         {city}, {region}
       </div>
       <footer class="print">

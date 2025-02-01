@@ -6,8 +6,8 @@ import React from "@/icons/react.astro";
 import Node from "@/icons/node.astro";
 import MySQL from "@/icons/sql.astro";
 import Git from "@/icons/git.astro";
-import GitHub from "@/icons/GitHub.astro";
-import Gitlab from "@/icons/Gitlab.astro";
+import Github from "@/icons/github.astro";
+import Gitlab from "@/icons/gitlab.astro";
 import Tailwind from "@/icons/tailwind.astro";
 import Next from "@/icons/next.astro";
 import Swift from "@/icons/swift.astro";
@@ -15,7 +15,7 @@ import SwiftUI from "@/icons/swiftui.astro";
 import Kotlin from "@/icons/kotlin.astro";
 import Java from "@/icons/java.astro";
 import Flutter from "@/icons/flutter.astro";
-import Figma from "@/icons/Figma.astro";
+import Figma from "@/icons/figma.astro";
 import ElasticSearch from "@/icons/elasticsearch.astro";
 import MongoDB from "@/icons/mongodb.astro";
 import Redis from "@/icons/redis.astro";
@@ -33,7 +33,7 @@ const SKILLS_ICONS = {
   Node,
   MySQL,
   Git,
-  GitHub,
+  GitHub: Github,
   Next,
   Tailwind,
   Swift,
@@ -42,7 +42,7 @@ const SKILLS_ICONS = {
   Java,
   Flutter,
   Figma,
-  Gitlab,
+  Gitlab: Gitlab,
   ElasticSearch,
   MongoDB,
   Redis,

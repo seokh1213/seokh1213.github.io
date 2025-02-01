@@ -1,11 +1,11 @@
-name: Deploy to GitHub Pages
+name: Deploy to Github Pages
 
 on:
   # Trigger the workflow every time you push to the `main` branch
   # Using a different branch name? Replace `main` with your branch’s name
   push:
-    branches: [main]
-  # Allows you to run this workflow manually from the Actions tab on GitHub.
+    branches: [ main ]
+  # Allows you to run this workflow manually from the Actions tab on Github.
   workflow_dispatch:
 
 # Allow this job to clone the repo and create a page deployment
@@ -34,6 +34,6 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Deploy to GitHub Pages
+      - name: Deploy to Github Pages
         id: deployment
         uses: actions/deploy-pages@v4
