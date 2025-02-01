@@ -12,70 +12,69 @@ const {image, summary, url} = basics;
 <!doctype html>
 <html lang="kr">
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>{title}</title>
-    <meta name="description" content={summary}/>
-    <link rel="preload" as="image" href={image}/>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>{title}</title>
+  <meta name="description" content={summary}/>
 
-    <script is:inline>
-        if (typeof Storage !== "undefined") {
-            const systemTheme = window.matchMedia("(prefers-color-scheme: dark)")
-                .matches
-                ? "dark"
-                : "light";
+  <script is:inline>
+    if (typeof Storage !== "undefined") {
+      const systemTheme = window.matchMedia("(prefers-color-scheme: dark)")
+        .matches
+        ? "dark"
+        : "light";
 
-            if (
-                (!localStorage.getItem("dark_mode") && systemTheme === "dark") ||
-                (localStorage.getItem("dark_mode") &&
-                    localStorage.getItem("dark_mode") === "true")
-            ) {
-                document.documentElement.classList.add("dark");
-            }
-        }
-    </script>
+      if (
+        (!localStorage.getItem("dark_mode") && systemTheme === "dark") ||
+        (localStorage.getItem("dark_mode") &&
+          localStorage.getItem("dark_mode") === "true")
+      ) {
+        document.documentElement.classList.add("dark");
+      }
+    }
+  </script>
 
-    <!-- Meta Tags -->
-    <meta property="og:url" content={url}/>
-    <meta property="og:type" content="website"/>
-    <meta property="og:title" content={title}/>
-    <meta property="og:description" content={summary}/>
-    <meta property="og:image" content="/assets/images/seokh1213.jpg"/>
-    <meta property="og:image:width" content="1200"/>
-    <meta property="og:image:height" content="630"/>
+  <!-- Meta Tags -->
+  <meta property="og:url" content={url}/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:title" content={title}/>
+  <meta property="og:description" content={summary}/>
+  <meta property="og:image" content="/assets/images/seokh1213.jpg"/>
+  <meta property="og:image:width" content="1200"/>
+  <meta property="og:image:height" content="630"/>
 
-    <meta name="twitter:card" content="summary_large_image"/>
-    <meta property="twitter:domain" content={url.split("//")[1] ?? ""}/>
-    <meta property="twitter:url" content={url}/>
-    <meta name="twitter:title" content={title}/>
-    <meta name="twitter:description" content={summary}/>
-    <meta name="twitter:image" content="/assets/images/seokh1213.jpg"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta property="twitter:domain" content={url.split("//")[1] ?? ""}/>
+  <meta property="twitter:url" content={url}/>
+  <meta name="twitter:title" content={title}/>
+  <meta name="twitter:description" content={summary}/>
+  <meta name="twitter:image" content="/assets/images/seokh1213.jpg"/>
 
-    <!-- Styles -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Itim"/>
-    <link rel="stylesheet" href="/themes/theme.css"/>
-    <link rel="stylesheet" href="/themes/main.css"/>
+  <!-- Styles -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Itim"/>
+  <link rel="stylesheet" href="/themes/theme.css"/>
+  <link rel="stylesheet" href="/themes/main.css"/>
 
-    <link rel="manifest" href="/manifest.json"/>
+  <link rel="manifest" href="/manifest.json"/>
 
-    <!-- Favicons -->
-    <link rel="icon" type="image/x-icon" href="/favicon/favicon.ico"/>
-    <link rel="apple-touch-icon" sizes="152x152" href="/favicon/favicon-152x152.png"/>
-    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/favicon-180x180.png"/>
-    <link rel="apple-touch-icon" sizes="192x192" href="/favicon/favicon-192x192.png"/>
+  <!-- Favicons -->
+  <link rel="icon" type="image/x-icon" href="/favicon/favicon.ico"/>
+  <link rel="apple-touch-icon" sizes="152x152" href="/favicon/favicon-152x152.png"/>
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon/favicon-180x180.png"/>
+  <link rel="apple-touch-icon" sizes="192x192" href="/favicon/favicon-192x192.png"/>
 
-    <meta name="theme-color" content="#ffffff"/>
+  <meta name="theme-color" content="#ffffff"/>
 
-    <Fragment set:html={import.meta.env.HEADER_INJECT}/>
+  <Fragment set:html={import.meta.env.HEADER_INJECT}/>
 </head>
 <body class="relative antialiased bg-white dark:bg-neutral-950">
 <SquareLines/>
 <Header/>
 <div class="absolute top-0 -z-10 h-full w-full print:hidden">
-    <div
-            class="bg-skin-hue/10 absolute bottom-auto left-[20%] right-auto top-0 h-[200px] w-[200px] -translate-x-[30%] translate-y-[20%] rounded-full blur-[80px] invert-0 dark:bg-white/5"
-    >
-    </div>
+  <div
+    class="bg-skin-hue/10 absolute bottom-auto left-[20%] right-auto top-0 h-[200px] w-[200px] -translate-x-[30%] translate-y-[20%] rounded-full blur-[80px] invert-0 dark:bg-white/5"
+  >
+  </div>
 </div>
 <slot/>
 <Footer/>

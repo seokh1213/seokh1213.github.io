@@ -1,5 +1,5 @@
 ---
-import type { Post, Content } from "@/types";
+import type {Post, Content} from "@/types";
 
 interface FolderItem {
   name: string;
@@ -10,9 +10,10 @@ interface FolderItem {
 
 interface Props {
   items: FolderItem[];
+  currentPost: Content<Partial<Post>>;
 }
 
-const { items } = Astro.props;
+const {items, currentPost} = Astro.props;
 ---
 
 <ul
@@ -34,11 +35,11 @@ const { items } = Astro.props;
                 stroke-linecap="round"
                 stroke-linejoin="round"
               >
-                <path d="M9 18l6-6-6-6" />
+                <path d="M9 18l6-6-6-6"/>
               </svg>
             </summary>
             <div class="ml-5">
-              <Astro.self items={item.children} />
+              <Astro.self items={item.children} currentPost={currentPost}/>
             </div>
           </details>
         ) : (

@@ -1,6 +1,10 @@
 @tailwind base;
 @layer base {
   :root {
+    --pattern-fg: color-mix(in oklab, var(--color-gray-950) 5%, transparent);
+    --pattern-fg-dark: color-mix(in oklab, var(--color-white) 10%, transparent);
+    --dark-color: #030712;
+
     --color-text-base: 0, 0, 0;
     --color-text-muted: 120, 120, 120;
     --color-text-inverted: 255, 255, 255;
@@ -10,6 +14,8 @@
     --color-button-accent: 249, 115, 22;
     --color-button-accent-hover: 55, 55, 55;
     --color-button-muted: 244, 239, 238;
+    --color-gray-950: oklch(.13 .028 261.692);
+    --color-white: oklch(1 0 89.876);
   }
 
   .dark {
