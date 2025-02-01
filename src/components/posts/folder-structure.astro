@@ -20,15 +20,11 @@ const {items, currentPost, indexPost, depth = 1} = Astro.props;
 const sortedItems = items
   .slice() // 원본 배열 보호
   .sort((a, b) => {
-    // 단건(자식 없음)과 폴더(자식 있음)를 구분
     if (a.children.length === b.children.length) {
-      // 같은 그룹 내에서는 알파벳 순 정렬
-      // 단건은 item.post.data.title, 폴더는 item.name을 기준
       const aLabel = a.children.length > 0 ? a.name : a.post.data.title;
       const bLabel = b.children.length > 0 ? b.name : b.post.data.title;
       return aLabel.localeCompare(bLabel);
     }
-    // 단건이 폴더보다 앞에 오도록 (children.length가 0이면 앞쪽)
     return a.children.length - b.children.length;
   });
 ---
@@ -41,7 +37,9 @@ const sortedItems = items
 >
   {indexPost && (
     <li
-      class="flex flex-col p-1.5 rounded-md text-[var(--secondary-text-color)] dark:text-[var(--secondary-text-color-dark)] hover:bg-neutral-100 dark:hover:bg-neutral-700"
+      class={`flex flex-col p-1.5 rounded-md text-[var(--secondary-text-color)] dark:text-[var(--secondary-text-color-dark)] 
+       ${currentPost.id === indexPost.id ? "text-[#F97316] dark:text-[#E34D0A] hover:bg-[#F97316]/30 dark:hover:bg-[#E34D0A]/30" : "hover:bg-neutral-100 dark:hover:bg-neutral-700"}
+        `}
       style="padding-left: 0.375rem;"
     >
       <a
@@ -52,42 +50,53 @@ const sortedItems = items
       </a>
     </li>
   )}
-  {sortedItems.map((item) => (
-    <li
-      class={`transition-colors relative flex flex-col p-1.5 rounded-md text-[var(--secondary-text-color)] dark:text-[var(--secondary-text-color-dark)] 
-        ${item.children.length === 0 ? "hover:bg-neutral-100 dark:hover:bg-neutral-700" : ""}
-        ${depth > 1 && item.children.length === 0 ? "rounded-l-none border-l border-neutral-200 dark:border-neutral-700 hover:border-neutral-400/60 hover:dark:border-neutral-500" : ""}
-      `}
-      style={`padding-left: ${depth * 0.375}rem;`}
-    >
-      {item.children.length > 0 ? (
-        <>
-          <div
-            class="flex justify-between py-1.5 pt-3 font-bold text-xs text-[var(--primary-text-color)] dark:text-[var(--primary-text-color-dark)]"
-          >
-            <span>{item.name}</span>
-            <svg
-              class="w-4 h-4 transition-transform group-open:rotate-90"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+  {sortedItems.map((item) => {
+    const isCurrentPost = currentPost.id === item.post.id;
+    const hasCurrentPost = item.children.some(child => child.post.id === currentPost.id);
+
+    return (
+      <li
+        x-data={`{ isOpen: ${hasCurrentPost || isCurrentPost ? "true" : "false"} }`}
+        class={`transition-colors relative flex flex-col p-1.5 rounded-md 
+          ${isCurrentPost ? "text-[#F97316] dark:text-[#E34D0A]" : ""}
+          ${item.children.length === 0 ? (isCurrentPost ? "hover:bg-[#F97316]/30 dark:hover:bg-[#E34D0A]/30" : "hover:bg-neutral-100 dark:hover:bg-neutral-700") : ""}
+          ${depth > 1 && item.children.length === 0 ? (isCurrentPost ? "rounded-l-none border-l border-[#F97316]/50 dark:border-[#E34D0A]/50 hover:border-[#F97316]/70 dark:hover:border-[#E34D0A]/70" : "rounded-l-none border-l border-neutral-200 dark:border-neutral-700 hover:border-neutral-400/60 hover:dark:border-neutral-500") : ""}
+        `}
+        style={`padding-left: ${depth * 0.375}rem;`}
+      >
+        {item.children.length > 0 ? (
+          <>
+            <div
+              class="flex justify-between py-1.5 pt-3 font-bold text-xs cursor-pointer"
+              @click="isOpen = !isOpen"
             >
-              <path d="M9 18l6-6-6-6"/>
-            </svg>
-          </div>
-          <Astro.self items={item.children} currentPost={currentPost} depth={depth + 1}/>
-        </>
-      ) : (
-        <a
-          href={item.path}
-          class="pl-1 text-sm"
-        >
-          {item.post.data.title}
-        </a>
-      )}
-    </li>
-  ))}
+              <span>{item.name}</span>
+              <svg
+                class="w-4 h-4 transition-transform"
+                :class="{ 'rotate-90': isOpen }"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M9 18l6-6-6-6"/>
+              </svg>
+            </div>
+            <ul x-show="isOpen">
+              <Astro.self items={item.children} currentPost={currentPost} depth={depth + 1}/>
+            </ul>
+          </>
+        ) : (
+          <a
+            href={item.path}
+            class="pl-1 text-sm"
+          >
+            {item.post.data.title}
+          </a>
+        )}
+      </li>
+    );
+  })}
 </ul>
