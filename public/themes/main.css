@@ -70,5 +70,5 @@ html.dark {
 }
 
 .dark img.logo {
-  content: url("/public/favicon/favicon-white.png");
+  content: url("/favicon/favicon-white.png");
 }
