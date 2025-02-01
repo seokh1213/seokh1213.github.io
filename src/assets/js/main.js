@@ -125,8 +125,7 @@ window.applyMenuItemClasses = () => {
   const menuItems = document.querySelectorAll("#menu a");
   for (let i = 0; i < menuItems.length; i++) {
     if (
-      menuItems[i].pathname ===
-      (window.location.pathname.replace(/\/$/, "") || "/")
+      window.location.pathname.startsWith(menuItems[i].pathname)
     ) {
       menuItems[i].classList.add("text-neutral-900", "dark:text-white");
     }
