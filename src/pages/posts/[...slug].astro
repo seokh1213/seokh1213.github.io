@@ -40,7 +40,7 @@ function generateFolderStructure(posts) {
       if (!existing) {
         existing = {
           name: part,
-          path: index === parts.length - 1 ? `/${slug}` : null,
+          path: index === parts.length - 1 ? `/posts/${slug}` : null,
           post,
           children: [],
         };
@@ -103,7 +103,6 @@ if (currentPost) {
     <main class="flex-1 flex flex-col">
       {currentPost && (
         <article class="prose dark:prose-invert max-w-none">
-          <h1>{currentPost.data.title}</h1>
           {Content &&
             <Content/>}
         </article>

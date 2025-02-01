@@ -1,7 +1,10 @@
 ---
+import type {Post, Content} from "@/types";
+
 interface FolderItem {
   name: string;
   path: string | null;
+  post: Content<Post>
   children: FolderItem[];
 }
 
@@ -40,7 +43,7 @@ const {items} = Astro.props;
           href={item.path}
           class="pl-3 text-sm text-dark/8 hover:text-dark/9 hover:bg-dark/1 dark:text-light/8 dark:hover:text-light/9 dark:hover:bg-light/1"
         >
-          {item.name}
+          {item.post.data.title}
         </a>
       )}
     </li>
