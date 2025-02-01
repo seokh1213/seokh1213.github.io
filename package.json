@@ -26,6 +26,9 @@
   },
   "packageManager": "pnpm@9.12.2",
   "dependencies": {
-    "@astrojs/ts-plugin": "^1.10.4"
+    "@astrojs/alpinejs": "^0.4.3",
+    "@astrojs/ts-plugin": "^1.10.4",
+    "@types/alpinejs": "^3.13.11",
+    "alpinejs": "^3.14.8"
   }
 }
