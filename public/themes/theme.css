@@ -20,6 +20,7 @@
     --secondary-text-color: color(srgb 0.114902 0.115843 0.133725 / 0.72);
     --primary-text-color-dark: color(srgb 1 1 1);
     --secondary-text-color-dark: color(srgb 1 1 1 / 0.72);
+    --tw-content: "";
   }
 
   .dark {
