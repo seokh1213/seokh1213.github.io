@@ -71,26 +71,6 @@ html.dark {
   }
 }
 
-.github-mark {
-  transition: all 0.3s ease-out;
-}
-
-.dark .about-logo {
-  transition: all 0.3s ease-out;
-}
-
-a:hover .about-logo {
-  content: url("/assets/images/favicon.png");
-}
-
-.dark .about-logo {
-  content: url("/assets/images/favicon.png");
-}
-
-.dark a:hover .about-logo {
-  content: url("/assets/images/favicon-white.png");
-}
-
 .dark img.logo {
-  content: url("/assets/images/favicon-white.png");
+  content: url("/public/favicon/favicon-white.png");
 }
