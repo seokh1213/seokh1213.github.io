@@ -1,14 +1,24 @@
 ---
 import menus from "@/collections/menu.json";
 import Logo from "@/components/common/logo.astro";
+import cn from "classnames";
 
 const {tab} = Astro.props;
+const isPostsTab = tab === "posts";
+
+const divClass = cn(
+  "flex items-center justify-between h-full pl-6 pr-4 mx-auto border-b border-l-0 border-r-0 border-transparent select-none lg:border-r lg:border-l lg:rounded-b-xl",
+  {
+    "w-full": isPostsTab,
+    "max-w-screen-2xl": !isPostsTab,
+  }
+)
 ---
 
 <div class="relative w-full h-20 opacity-0 pointer-events-none"></div>
 <header id="header" class="absolute top-0 z-50 w-full h-20">
   <div
-    class={`${tab === "posts" ? "w-full" : "max-w-screen-2xl"} flex items-center justify-between h-full pl-6 pr-4 mx-auto border-b border-l-0 border-r-0 border-transparent select-none lg:border-r lg:border-l lg:rounded-b-xl`}
+    class={divClass}
   >
     <Logo/>
     <div

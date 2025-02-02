@@ -2,6 +2,7 @@
 
 window.darkMode = false;
 
+const postsStickyClasses = ["fixed", "top-[56px]"];
 const stickyClasses = ["fixed", "h-14"];
 const unstickyClasses = ["absolute", "h-20"];
 const stickyClassesContainer = [
@@ -13,9 +14,13 @@ const stickyClassesContainer = [
 ];
 const unstickyClassesContainer = ["border-transparent"];
 let headerElement = null;
+let postsTopElement = null;
+let postContentElement = null;
 
 document.addEventListener("DOMContentLoaded", () => {
   headerElement = document.getElementById("header");
+  postsTopElement = document.getElementById("post-nav")
+  postContentElement = document.getElementById("post-content")
 
   if (
     localStorage.getItem("dark_mode") &&
@@ -54,6 +59,22 @@ window.evaluateHeaderPosition = () => {
     headerElement.classList.remove(...stickyClasses);
     document.getElementById("menu").classList.remove("top-[56px]");
     document.getElementById("menu").classList.add("top-[75px]");
+  }
+
+  if (postsTopElement) {
+    if (window.scrollY > 16) {
+      postsTopElement.classList.add(...postsStickyClasses);
+    } else {
+      postsTopElement.classList.remove(...postsStickyClasses);
+    }
+  }
+
+  if (postContentElement) {
+    if (window.scrollY > 16) {
+      postContentElement.classList.add("mt-14");
+    } else {
+      postContentElement.classList.remove("mt-14");
+    }
   }
 };
 
