@@ -7,10 +7,9 @@ const stickyClasses = ["fixed", "h-14"];
 const unstickyClasses = ["absolute", "h-20"];
 const stickyClassesContainer = [
   "border-neutral-300/50",
-  "bg-white/80",
+  "bg-white",
   "dark:border-neutral-600/40",
-  "dark:bg-neutral-900/60",
-  "backdrop-blur-2xl",
+  "dark:bg-neutral-950",
 ];
 const unstickyClassesContainer = ["border-transparent"];
 let headerElement = null;
@@ -69,7 +68,7 @@ window.evaluateHeaderPosition = () => {
     }
   }
 
-  if (postContentElement) {
+  if (postContentElement && window.innerWidth < 1024) {
     if (window.scrollY > 16) {
       postContentElement.classList.add("mt-14");
     } else {
