@@ -41,6 +41,12 @@ const hasCurrentPostRecursive = (items: FolderItem[]): boolean => {
     return false;
   });
 };
+
+function toPascalCase(str: string) {
+  return str.toLowerCase()
+    .replace(/^[a-z]/, firstChar => firstChar.toUpperCase())
+    .replace(/[^a-zA-Z0-9]+(.)/g, (m, chr) => chr.toUpperCase());
+}
 ---
 
 <>
@@ -78,7 +84,7 @@ const hasCurrentPostRecursive = (items: FolderItem[]): boolean => {
                 style={`margin-left: ${(depth - 1) * 14}px;`}
                 @click="isOpen = !isOpen"
               >
-                <span>{item.name}</span>
+                <span>{toPascalCase(item.name)}</span>
                 {
                   hasCurrentPost ?
                     <svg
