@@ -9,7 +9,7 @@ published: true
 
 #### ApplicationContext는 스프링 컨테이너이다.
 
-```java:AnnotationConfigApplicationContext.java
+```java
 ApplicationContext applicationContext = new AnnotationConfigApplicationContext(AppConfig.class);
 ```
 

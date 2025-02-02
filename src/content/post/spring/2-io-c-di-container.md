@@ -17,7 +17,7 @@ published: true
 
 - 기존 프로그램은 클라이언트(사용하는 쪽 코드)에서 구현 객체가 필요한 경우 스스로 생성하고 사용했다.
 
-```java:당연하게도 사용하는곳에서 생성
+```java
 DiscountPolicy discountPolicy = new FixDiscountPolicy();
 ```
 
