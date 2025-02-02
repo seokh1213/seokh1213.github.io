@@ -48,30 +48,25 @@ const hasCurrentPostRecursive = (items: FolderItem[]): boolean => {
     const isCurrentPost = currentPostId === item.post.id;
     const hasCurrentPost = hasCurrentPostRecursive(item.children);
 
-    const liClass = cn(
-      "transition-[background-color] relative flex flex-col rounded-md",
-      {
-        "hover:bg-[#F97316]/30 dark:hover:bg-[#E34D0A]/30": item.children.length === 0 && isCurrentPost,
-        "hover:bg-neutral-100 dark:hover:bg-neutral-700": item.children.length === 0 && !isCurrentPost,
-        "rounded-l-none border-l border-[#F97316]/50 dark:border-[#E34D0A]/50 hover:border-[#F97316]/70 dark:hover:border-[#E34D0A]/70": depth > 1 && item.children.length === 0 && isCurrentPost,
-        "rounded-l-none border-l border-neutral-200 dark:border-neutral-700 hover:border-neutral-400/60 hover:dark:border-neutral-500": depth > 1 && item.children.length === 0 && !isCurrentPost
-      }
-    )
-
-    const aClass = cn("p-1.5 pl-2.5 text-sm", {
+    const aClass = cn("p-1.5 pl-2.5 text-sm rounded-md transition-[background-color]", {
       "text-[#F97316] dark:text-[#E34D0A]": isCurrentPost,
+      "hover:bg-[#F97316]/30 dark:hover:bg-[#E34D0A]/30": item.children.length === 0 && isCurrentPost,
+      "hover:bg-neutral-100 dark:hover:bg-neutral-700": item.children.length === 0 && !isCurrentPost,
+      "rounded-l-none border-l border-[#F97316]/50 dark:border-[#E34D0A]/50 hover:border-[#F97316]/70 dark:hover:border-[#E34D0A]/70": depth > 1 && item.children.length === 0 && isCurrentPost,
+      "rounded-l-none border-l border-neutral-200 dark:border-neutral-700 hover:border-neutral-400/60 hover:dark:border-neutral-500": depth > 1 && item.children.length === 0 && !isCurrentPost
     })
 
     return (
       <li
         x-data={`{ isOpen: ${hasCurrentPost || isCurrentPost ? "true" : "false"} }`}
-        class={liClass}
+        class="flex flex-col"
       >
         {item.children.length === 0 ?
           (
             <a
               href={item.path}
               class={aClass}
+              style={`margin-left: ${(depth - 1) * 14}px;`}
             >
               {item.post.data.title}
             </a>
@@ -80,6 +75,7 @@ const hasCurrentPostRecursive = (items: FolderItem[]): boolean => {
             <>
               <div
                 class="flex justify-between pl-2.5 pb-1.5 pt-3 font-bold text-xs cursor-pointer hover:bg-neutral-100 dark:hover:bg-neutral-700 rounded-md"
+                style={`margin-left: ${(depth - 1) * 14}px;`}
                 @click="isOpen = !isOpen"
               >
                 <span>{item.name}</span>
@@ -110,7 +106,6 @@ const hasCurrentPostRecursive = (items: FolderItem[]): boolean => {
                       <path d="M9 18l6-6-6-6"/>
                     </svg>
                 }
-
               </div>
               <ul x-show="isOpen" style={`${!hasCurrentPost && "display: none;"}`}>
                 <Astro.self items={item.children} currentPostId={currentPostId} depth={depth + 1}/>
