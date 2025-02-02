@@ -114,10 +114,11 @@ if (currentPost) {
     <Separator/>
 
     <!-- 메인 콘텐츠 -->
-    <main class="flex-1 flex flex-col ">
+    <main class="flex-1 flex flex-col p-6 lg:p-10">
       {
         currentPost && (
           <article class="prose dark:prose-invert max-w-none">
+            <h2>{currentPost.data.title}</h2>
             {Content &&
               <Content/>}
           </article>
