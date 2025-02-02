@@ -7,4 +7,6 @@ published: true
 tags: [ ]
 ---
 
-# index
+### Hi there 👋
+
+![stats](https://github-readme-stats.vercel.app/api?username=seokh1213&show_icons=true)
