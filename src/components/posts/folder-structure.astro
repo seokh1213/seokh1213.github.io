@@ -1,5 +1,6 @@
 ---
 import type {Post, Content} from "@/types";
+import cn from "classnames"
 
 interface FolderItem {
   name: string;
@@ -10,11 +11,11 @@ interface FolderItem {
 
 interface Props {
   items: FolderItem[];
-  currentPost: Content<Partial<Post>>;
+  currentPostId: string;
   depth?: number;
 }
 
-const {items, currentPost, depth = 1} = Astro.props;
+const {items, currentPostId, depth = 1} = Astro.props;
 
 const sortedItems = items
   .slice() // 원본 배열 보호
@@ -26,55 +27,77 @@ const sortedItems = items
     }
     return a.children.length - b.children.length;
   });
+
+const hasCurrentPostRecursive = (items: FolderItem[]): boolean => {
+  return items.some(item => {
+    // 현재 아이템이 현재 포스트인지 확인
+    if (item.post.id === currentPostId) {
+      return true;
+    }
+    // 자식들을 재귀적으로 확인
+    if (item.children.length > 0) {
+      return hasCurrentPostRecursive(item.children);
+    }
+    return false;
+  });
+};
 ---
 
 <>
   {sortedItems.map((item) => {
-    const isCurrentPost = currentPost.id === item.post.id;
-    const hasCurrentPost = item.children.some(child => child.post.id === currentPost.id);
+    const isCurrentPost = currentPostId === item.post.id;
+    const hasCurrentPost = hasCurrentPostRecursive(item.children);
+
+    const liClass = cn(
+      "transition-[background-color] relative flex flex-col rounded-md",
+      {
+        "text-[#F97316] dark:text-[#E34D0A]": isCurrentPost,
+        "hover:bg-[#F97316]/30 dark:hover:bg-[#E34D0A]/30": item.children.length === 0 && isCurrentPost,
+        "hover:bg-neutral-100 dark:hover:bg-neutral-700": item.children.length === 0 && !isCurrentPost,
+        "rounded-l-none border-l border-[#F97316]/50 dark:border-[#E34D0A]/50 hover:border-[#F97316]/70 dark:hover:border-[#E34D0A]/70": depth > 1 && item.children.length === 0 && isCurrentPost,
+        "rounded-l-none border-l border-neutral-200 dark:border-neutral-700 hover:border-neutral-400/60 hover:dark:border-neutral-500": depth > 1 && item.children.length === 0 && !isCurrentPost
+      }
+    )
 
     return (
       <li
         x-data={`{ isOpen: ${hasCurrentPost || isCurrentPost ? "true" : "false"} }`}
-        class={`transition-colors relative flex flex-col p-1.5 rounded-md 
-          ${isCurrentPost ? "text-[#F97316] dark:text-[#E34D0A]" : ""}
-          ${item.children.length === 0 ? (isCurrentPost ? "hover:bg-[#F97316]/30 dark:hover:bg-[#E34D0A]/30" : "hover:bg-neutral-100 dark:hover:bg-neutral-700") : ""}
-          ${depth > 1 && item.children.length === 0 ? (isCurrentPost ? "rounded-l-none border-l border-[#F97316]/50 dark:border-[#E34D0A]/50 hover:border-[#F97316]/70 dark:hover:border-[#E34D0A]/70" : "rounded-l-none border-l border-neutral-200 dark:border-neutral-700 hover:border-neutral-400/60 hover:dark:border-neutral-500") : ""}
-        `}
-        style={`padding-left: ${depth * 0.375}rem;`}
+        class={liClass}
       >
-        {item.children.length > 0 ? (
-          <>
-            <div
-              class="flex justify-between py-1.5 pt-3 font-bold text-xs cursor-pointer hover:bg-neutral-100 dark:hover:bg-neutral-700 rounded-md pl-1.5"
-              @click="isOpen = !isOpen"
+        {item.children.length === 0 ?
+          (
+            <a
+              href={item.path}
+              class="p-1.5 pl-2.5 text-sm"
             >
-              <span>{item.name}</span>
-              <svg
-                class="w-4 h-4 transition-transform"
-                :class="{ 'rotate-90': isOpen }"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+              {item.post.data.title}
+            </a>
+          ) :
+          (
+            <>
+              <div
+                class="flex justify-between pl-2.5 pb-1.5 pt-3 font-bold text-xs cursor-pointer hover:bg-neutral-100 dark:hover:bg-neutral-700 rounded-md"
+                @click="isOpen = !isOpen"
               >
-                <path d="M9 18l6-6-6-6"/>
-              </svg>
-            </div>
-            <ul x-show="isOpen">
-              <Astro.self items={item.children} currentPost={currentPost} depth={depth + 1}/>
-            </ul>
-          </>
-        ) : (
-          <a
-            href={item.path}
-            class="pl-1 text-sm"
-          >
-            {item.post.data.title}
-          </a>
-        )}
+                <span>{item.name}</span>
+                <svg
+                  class="w-4 h-4 transition-transform text-neutral-800 dark:text-neutral-50"
+                  :class="{ 'rotate-90': isOpen }"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M9 18l6-6-6-6"/>
+                </svg>
+              </div>
+              <ul x-show="isOpen" style={`${!hasCurrentPost && "display: none;"}`}>
+                <Astro.self items={item.children} currentPostId={currentPostId} depth={depth + 1}/>
+              </ul>
+            </>
+          )}
       </li>
     );
   })}
