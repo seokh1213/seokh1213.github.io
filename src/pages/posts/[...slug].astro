@@ -135,7 +135,7 @@ const pathArray = [...currentPost.id.split("/").slice(0, -1).map(toPascalCase), 
         <div
           @click="isOpen = !isOpen"
           x-show="isOpen"
-          class="fixed left-0 right-0 h-screen bg-white/70 dark:bg-neutral-900/70"
+          class="fixed inset-x-0 h-screen bg-white/70 dark:bg-neutral-900/70"
         ></div>
         <nav
           class="border-r bg-white dark:bg-neutral-950 p-2 lg:pb-20 overflow-y-auto h-screen lg:top-16 lg:h-[calc(100vh_-_4rem)] z-[1]"
