@@ -126,14 +126,16 @@ const pathArray = [...currentPost.id.split("/").slice(0, -1).map(toPascalCase), 
       </div>
 
       <aside
+        id="post-mobile-side"
         x-show="isOpen"
+        x-init="window.addEventListener('resize', () => {isOpen = isOpen && window.innerWidth < 1024;})"
         x-transition:enter="transition ease-out duration-200"
         x-transition:enter-start="opacity-0 -translate-x-full"
         x-transition:enter-end="opacity-100 translate-x-0"
         x-transition:leave="transition ease-in duration-200"
         x-transition:leave-start="opacity-100 translate-x-0"
         x-transition:leave-end="opacity-0 -translate-x-full"
-        class="flex flex-col basis-full lg:basis-72 grow-0 shrink-0 w-[18rem]"
+        class="flex flex-col basis-full grow-0 shrink-0 w-full sm:w-1/2 fixed bg-white dark:bg-neutral-950"
       >
         <nav
           class="p-2 lg:pb-20 overflow-y-auto h-screen lg:top-16 lg:h-[calc(100vh_-_4rem)] z-[1]"

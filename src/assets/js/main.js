@@ -15,11 +15,13 @@ const unstickyClassesContainer = ["border-transparent"];
 let headerElement = null;
 let postsTopElement = null;
 let postContentElement = null;
+let postMobileSideElement = null;
 
 document.addEventListener("DOMContentLoaded", () => {
   headerElement = document.getElementById("header");
   postsTopElement = document.getElementById("post-nav")
   postContentElement = document.getElementById("post-content")
+  postMobileSideElement = document.getElementById("post-mobile-side")
 
   if (
     localStorage.getItem("dark_mode") &&
@@ -65,6 +67,14 @@ window.evaluateHeaderPosition = () => {
       postsTopElement.classList.add(...postsStickyClasses);
     } else {
       postsTopElement.classList.remove(...postsStickyClasses);
+    }
+  }
+
+  if (postMobileSideElement) {
+    if (window.scrollY > 16) {
+      postMobileSideElement.classList.add("top-[112px]");
+    } else {
+      postMobileSideElement.classList.remove("top-[112px]");
     }
   }
 
