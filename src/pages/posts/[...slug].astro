@@ -68,7 +68,13 @@ if (currentPost) {
   Content = PostContent;
 }
 
-const pathArray = [...currentPost.id.split("/").slice(0, -1), currentPost.data.title];
+function toPascalCase(str: string) {
+  return str.toLowerCase()
+    .replace(/^[a-z]/, firstChar => firstChar.toUpperCase())
+    .replace(/[^a-zA-Z0-9]+(.)/g, (m, chr) => chr.toUpperCase());
+}
+
+const pathArray = [...currentPost.id.split("/").slice(0, -1).map(toPascalCase), currentPost.data.title];
 ---
 
 <Layout title=`${nickname} - Posts` tab="posts">
@@ -82,7 +88,7 @@ const pathArray = [...currentPost.id.split("/").slice(0, -1), currentPost.data.t
     <!-- 사이드바 -->
     <div>
       <div
-        class="lg:hidden flex h-14 items-center border-b border-gray-950/5 bg-white px-4 sm:px-6 dark:border-white/10 dark:bg-neutral-950 text-neutral-400">
+        class="lg:hidden flex h-14 items-center border-b border-gray-950/5 bg-white px-4 sm:px-6 dark:border-white/10 dark:bg-neutral-950 text-neutral-400 sticky top-0">
         <button class="p-2 rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-700">
           <svg
             class="w-4 h-4 text-black dark:text-white"
