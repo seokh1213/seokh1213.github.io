@@ -51,13 +51,16 @@ const hasCurrentPostRecursive = (items: FolderItem[]): boolean => {
     const liClass = cn(
       "transition-[background-color] relative flex flex-col rounded-md",
       {
-        "text-[#F97316] dark:text-[#E34D0A]": isCurrentPost,
         "hover:bg-[#F97316]/30 dark:hover:bg-[#E34D0A]/30": item.children.length === 0 && isCurrentPost,
         "hover:bg-neutral-100 dark:hover:bg-neutral-700": item.children.length === 0 && !isCurrentPost,
         "rounded-l-none border-l border-[#F97316]/50 dark:border-[#E34D0A]/50 hover:border-[#F97316]/70 dark:hover:border-[#E34D0A]/70": depth > 1 && item.children.length === 0 && isCurrentPost,
         "rounded-l-none border-l border-neutral-200 dark:border-neutral-700 hover:border-neutral-400/60 hover:dark:border-neutral-500": depth > 1 && item.children.length === 0 && !isCurrentPost
       }
     )
+
+    const aClass = cn("p-1.5 pl-2.5 text-sm", {
+      "text-[#F97316] dark:text-[#E34D0A]": isCurrentPost,
+    })
 
     return (
       <li
@@ -68,7 +71,7 @@ const hasCurrentPostRecursive = (items: FolderItem[]): boolean => {
           (
             <a
               href={item.path}
-              class="p-1.5 pl-2.5 text-sm"
+              class={aClass}
             >
               {item.post.data.title}
             </a>
@@ -80,18 +83,34 @@ const hasCurrentPostRecursive = (items: FolderItem[]): boolean => {
                 @click="isOpen = !isOpen"
               >
                 <span>{item.name}</span>
-                <svg
-                  class="w-4 h-4 transition-transform text-neutral-800 dark:text-neutral-50"
-                  :class="{ 'rotate-90': isOpen }"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <path d="M9 18l6-6-6-6"/>
-                </svg>
+                {
+                  hasCurrentPost ?
+                    <svg
+                      class="w-4 h-4 transition-transform"
+                      :class="{ '-rotate-90': !isOpen }"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M6 9l6 6 6-6"/>
+                    </svg> :
+                    <svg
+                      class="w-4 h-4 transition-transform"
+                      :class="{ 'rotate-90': isOpen }"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M9 18l6-6-6-6"/>
+                    </svg>
+                }
+
               </div>
               <ul x-show="isOpen" style={`${!hasCurrentPost && "display: none;"}`}>
                 <Astro.self items={item.children} currentPostId={currentPostId} depth={depth + 1}/>
