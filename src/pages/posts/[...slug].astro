@@ -187,7 +187,7 @@ const pathArray = [...currentPost.id.split("/").slice(0, -1).map(toPascalCase), 
     <main id="post-content" class="flex-1 flex justify-center items-start">
       {
         currentPost && (
-          <article class="prose dark:prose-invert lg:max-w-[42rem] p-6 lg:p-10 flex-1">
+          <article class="prose dark:prose-invert w-full lg:max-w-[42rem] p-6 lg:p-10 flex-1">
             <div class="font-bold text-2xl">{currentPost.data.title}</div>
             {Content &&
               <Content/>}
