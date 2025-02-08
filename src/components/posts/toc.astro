@@ -96,7 +96,6 @@ const getIndentClass = (depth: number) => {
     }
 
     // 페이지 최상단에서는 첫 번째 헤더를 선택
-    console.log(currentSection, scrollTop, headerHeight, headingElements.length)
     if (!currentSection && scrollTop < headerHeight && headingElements.length > 0) {
       currentSection = headingElements[0];
     }
