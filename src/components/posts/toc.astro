@@ -36,7 +36,7 @@ const getIndentClass = (depth: number) => {
           <a
             href={`#${heading.slug}`}
             data-heading-link
-            class={`block text-neutral-500/90 dark:text-neutral-400/90 ${getIndentClass(heading.depth)} before:w-2 before:h-2 before:rounded-full before:mr-2 before:scale-0 before:transition-transform before:duration-200 before:bg-[#F97316] dark:before:bg-[#E34D0A]`}
+            class={`block text-neutral-500/90 dark:text-neutral-400/90 ${getIndentClass(heading.depth)} before:min-w-2 before:min-h-2 before:rounded-full before:mr-2 before:scale-0 before:transition-transform before:duration-200 before:bg-[#F97316] dark:before:bg-[#E34D0A]`}
           >
             {heading.text}
           </a>
