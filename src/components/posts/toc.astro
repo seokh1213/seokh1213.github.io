@@ -11,7 +11,7 @@ const {headings} = Astro.props;
 
 // depth에 따른 padding 설정
 const getIndentClass = (depth: number) => {
-  const base = "hover:text-neutral-900 dark:hover:text-neutral-100";
+  const base = "hover:text-[#F97316] dark:hover:text-[#E34D0A]";
   switch (depth) {
     case 2:
       return `${base} pl-2`;
@@ -25,7 +25,7 @@ const getIndentClass = (depth: number) => {
 };
 ---
 
-<nav class="">
+<nav>
   <p
     class="mb-3 font-bold text-sm flex items-center text-[var(--secondary-text-color)] dark:text-[var(--secondary-text-color-dark)]">
     목차
@@ -36,7 +36,8 @@ const getIndentClass = (depth: number) => {
         <li>
           <a
             href={`#${heading.slug}`}
-            class={`block text-neutral-500 dark:text-neutral-400 transition-colors ${getIndentClass(heading.depth)}`}
+            data-heading-link
+            class={`block transition-colors text-neutral-500/80 hover:text-neutral-900 dark:text-neutral-400/80 dark:hover:text-neutral-100 ${getIndentClass(heading.depth)}`}
           >
             {heading.text}
           </a>
@@ -56,14 +57,14 @@ const getIndentClass = (depth: number) => {
   // 현재 활성화된 링크의 스타일을 제거하는 함수
   const removeActiveStyles = () => {
     if (currentActiveLink) {
-      currentActiveLink.classList.remove('text-[#F97316]', 'dark:text-[#E34D0A]', 'font-medium');
+      currentActiveLink.classList.remove('!text-[#F97316]', '!dark:text-[#E34D0A]', 'font-bold');
     }
   };
 
   // 새로운 링크를 활성화하는 함수
   const setActiveLink = (link: Element) => {
     removeActiveStyles();
-    link.classList.add('text-[#F97316]', 'dark:text-[#E34D0A]', 'font-medium');
+    link.classList.add('!text-[#F97316]', '!dark:text-[#E34D0A]', 'font-bold');
     currentActiveLink = link;
   };
 
