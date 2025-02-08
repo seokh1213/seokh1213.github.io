@@ -70,23 +70,34 @@ const getIndentClass = (depth: number) => {
   const updateActiveSection = () => {
     if (isManualScroll) return;
 
-    const pageTop = window.scrollY;
-    const pageMiddle = pageTop + (window.innerHeight / 2);
+    const headerHeight = 56; // 헤더 높이
+    const scrollTop = window.scrollY;
+    const viewportTop = scrollTop + headerHeight; // 헤더 아래부터가 실제 보이는 영역의 시작점
 
     let currentSection = null;
+    let prevSection = null;
 
     for (const heading of headingElements) {
       const rect = heading.getBoundingClientRect();
-      const elemTop = rect.top + pageTop;
+      const elemTop = rect.top + scrollTop;
 
-      if (elemTop <= pageMiddle) {
-        currentSection = heading;
-      } else {
+      // 화면에 보이는 첫 번째 헤더를 찾습니다
+      if (elemTop > viewportTop) {
+        // 이전 섹션이 있다면 그것이 현재 활성화될 섹션
+        currentSection = prevSection || heading;
         break;
       }
+      prevSection = heading;
     }
 
-    if (!currentSection && pageTop < 100 && headingElements.length > 0) {
+    // 모든 헤더가 viewport 위에 있는 경우 마지막 헤더를 선택
+    if (!currentSection && prevSection) {
+      currentSection = prevSection;
+    }
+
+    // 페이지 최상단에서는 첫 번째 헤더를 선택
+    console.log(currentSection, scrollTop, headerHeight, headingElements.length)
+    if (!currentSection && scrollTop < headerHeight && headingElements.length > 0) {
       currentSection = headingElements[0];
     }
 
