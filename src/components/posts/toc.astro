@@ -1,0 +1,71 @@
+---
+interface Props {
+  headings: {
+    depth: number;
+    slug: string;
+    text: string;
+  }[];
+}
+
+const {headings} = Astro.props;
+
+// depth에 따른 padding 설정
+const getIndentClass = (depth: number) => {
+  const base = "hover:text-neutral-900 dark:hover:text-neutral-100";
+  switch (depth) {
+    case 2:
+      return `${base} pl-2`;
+    case 3:
+      return `${base} pl-4`;
+    case 4:
+      return `${base} pl-6`;
+    default:
+      return base;
+  }
+};
+---
+
+<nav class="p-4">
+  <p class="font-medium mb-4 text-sm text-neutral-900 dark:text-neutral-100">목차</p>
+  <ul class="space-y-2.5 text-sm">
+    {
+      headings.map((heading) => (
+        <li>
+          <a
+            href={`#${heading.slug}`}
+            class={`block text-neutral-500 dark:text-neutral-400 transition-colors ${getIndentClass(heading.depth)}`}
+          >
+            {heading.text}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</nav>
+
+<script>
+  // 현재 보고 있는 섹션 하이라이트
+  const observerCallback = (entries: IntersectionObserverEntry[]) => {
+    entries.forEach((entry) => {
+      const id = entry.target.getAttribute('id');
+      if (id) {
+        const tocLink = document.querySelector(`a[href="#${id}"]`);
+        if (tocLink) {
+          if (entry.isIntersecting) {
+            tocLink.classList.add('text-[#F97316]', 'dark:text-[#E34D0A]');
+          } else {
+            tocLink.classList.remove('text-[#F97316]', 'dark:text-[#E34D0A]');
+          }
+        }
+      }
+    });
+  };
+
+  const observer = new IntersectionObserver(observerCallback, {
+    rootMargin: '-100px 0px -66%',
+  });
+
+  document.querySelectorAll('article h2, article h3, article h4').forEach((heading) => {
+    observer.observe(heading);
+  });
+</script>

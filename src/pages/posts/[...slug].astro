@@ -1,9 +1,9 @@
 ---
-// pages/posts/[...slug].astro
 import {getCollection, render} from "astro:content";
 import Layout from "@/layouts/main.astro";
 import FolderStructure from "@/components/posts/folder-structure.astro";
 import Separator from "@/components/posts/separator.astro"
+import TableOfContents from "@/components/posts/toc.astro";
 import {basics} from "@cv";
 
 const {nickname} = basics;
@@ -63,9 +63,11 @@ const indexPost = posts.find((post) => post.id === "index");
 const currentPost = slug ? post : indexPost;
 
 let Content = undefined;
+let headings = [];
 if (currentPost) {
-  const {Content: PostContent} = await render(currentPost);
-  Content = PostContent;
+  const rendered = await render(currentPost);
+  Content = rendered.Content;
+  headings = rendered.headings;
 }
 
 function toPascalCase(str: string) {
@@ -182,14 +184,17 @@ const pathArray = [...currentPost.id.split("/").slice(0, -1).map(toPascalCase), 
     <Separator/>
 
     <!-- 메인 콘텐츠 -->
-    <main id="post-content" class="flex-1 flex flex-col lg:max-w-[calc(100vw-404px)]">
+    <main id="post-content" class="flex-1 flex justify-center items-start">
       {
         currentPost && (
-          <article class="prose dark:prose-invert max-w-none p-6 lg:p-10 flex-1">
+          <article class="prose dark:prose-invert lg:max-w-[42rem] p-6 lg:p-10 flex-1">
             <h2>{currentPost.data.title}</h2>
             {Content &&
               <Content/>}
           </article>
+          <div class="max-w-[18rem] max-h-full hidden xl:flex flex-1 flex-col sticky top-[56px] ml-4">
+            <TableOfContents headings={headings}/>
+          </div>
         )
       }
     </main>
