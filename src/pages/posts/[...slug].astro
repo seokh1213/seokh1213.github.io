@@ -5,11 +5,16 @@ import FolderStructure from "@/components/posts/folder-structure.astro";
 import Separator from "@/components/posts/separator.astro"
 import TableOfContents from "@/components/posts/toc.astro";
 import {basics} from "@cv";
+import type {Post, Content} from "@/types";
 
 const {nickname} = basics;
 
+const posts = (await getCollection("post"))
+  .filter(post => import.meta.env.DEV || post.data.published === true)
+
 export async function getStaticPaths() {
-  const posts = await getCollection("post");
+  const posts = (await getCollection("post"))
+    .filter(post => import.meta.env.DEV || post.data.published === true);
 
   return [
     // index 페이지용 경로
@@ -24,7 +29,6 @@ export async function getStaticPaths() {
 
 const {post} = Astro.props;
 const {slug} = Astro.params;
-const posts = await getCollection("post");
 
 // 폴더 구조 변환 함수
 function generateFolderStructure(posts) {
