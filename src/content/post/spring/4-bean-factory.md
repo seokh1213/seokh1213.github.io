@@ -1,6 +1,8 @@
 ---
 layout: ../../layouts/post.astro
 title: 4. BeanFactory
+createdAt: 1663427275420
+updatedAt: 1663428021001
 tags: [ spring ]
 published: true
 ---
