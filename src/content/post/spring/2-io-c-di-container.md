@@ -1,8 +1,6 @@
 ---
 layout: ../../layouts/post.astro
 title: 2. 스프링 IoC, DI, Container
-createdAt: 1663315162219
-updatedAt: 1664182025004
 tags: [ spring ]
 published: true
 ---

@@ -1,8 +1,6 @@
 ---
 layout: ../../layouts/post.astro
 title: 6. ComponentScan
-createdAt: 1663837688469
-updatedAt: 1664182029352
 tags: [ spring ]
 published: true
 ---

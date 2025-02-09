@@ -1,8 +1,6 @@
 ---
 layout: ../../layouts/post.astro
 title: 3. ApplicationContext
-createdAt: 1663394178835
-updatedAt: 1664182018789
 tags: [ spring ]
 published: true
 ---
