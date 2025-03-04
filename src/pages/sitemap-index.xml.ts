@@ -10,35 +10,24 @@ export const GET: APIRoute = async () => {
 
   // sitemap XML 생성
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset
-      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>${SITE_URL}/</loc>
-    <changefreq>daily</changefreq>
-    <priority>1.0</priority>
+    <lastmod>2025-02-01</lastmod>
   </url>
   <url>
     <loc>${SITE_URL}/posts/</loc>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2025-02-01</lastmod>
   </url>
-  ${posts.map(post => `
-  <url>
+  ${posts.map(post => `<url>
     <loc>${SITE_URL}/posts/${post.id}${!post.id.endsWith("index") ? "/" : ""}</loc>
     <lastmod>${post.data.updatedAt ? new Date(post.data.updatedAt).toISOString() : new Date().toISOString()}</lastmod>    
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  `).join('')}
+  </url>`).join('\n')}
 </urlset>`;
 
   return new Response(sitemap, {
     headers: {
-      'Content-Type': 'application/xml',
-      'Cache-Control': 'public, max-age=3600'
+      'Content-Type': 'application/xml'
     }
   });
 };
