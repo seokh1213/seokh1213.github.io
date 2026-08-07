@@ -135,32 +135,32 @@ const SOCIAL_ICONS: SocialIcon = {
 
   .profile-photo {
     clip-path: polygon(
-      49% 0,
-      48% 12%,
-      51% 25%,
-      47% 38%,
-      50% 52%,
-      46% 65%,
-      50% 78%,
-      48% 90%,
-      49% 100%,
-      51% 100%,
-      52% 90%,
-      50% 78%,
-      54% 65%,
-      50% 52%,
-      53% 38%,
-      49% 25%,
-      52% 12%,
-      51% 0
+      48% 41%,
+      51% 42%,
+      54% 43%,
+      53% 45%,
+      56% 48%,
+      52% 49%,
+      53% 54%,
+      50% 51%,
+      47% 54%,
+      48% 49%,
+      43% 50%,
+      46% 46%,
+      44% 43%,
+      48% 44%,
+      46% 40%,
+      49% 43%
     );
+    filter: blur(3px) contrast(1.35) saturate(1.5);
     opacity: 0;
     z-index: 2;
     object-position: 62% center;
     transform: scale(1.02);
     transition:
-      clip-path 760ms cubic-bezier(0.4, 0, 0.2, 1),
-      opacity 90ms ease-out;
+      clip-path 820ms steps(10, end),
+      filter 640ms ease-out,
+      opacity 100ms ease-out;
   }
 
   .profile-mask {
@@ -169,29 +169,49 @@ const SOCIAL_ICONS: SocialIcon = {
     transform: scale(1.01);
   }
 
+  .profile-portrait::after {
+    @apply pointer-events-none absolute inset-0 rounded-2xl;
+    background:
+      linear-gradient(90deg, transparent 46%, rgb(125 211 252 / 0.85) 47% 48%, transparent 49%),
+      linear-gradient(90deg, transparent 52%, rgb(249 115 22 / 0.65) 53% 54%, transparent 55%),
+      radial-gradient(circle at 42% 38%, rgb(255 255 255 / 0.9) 0 1px, transparent 2px),
+      radial-gradient(circle at 58% 43%, rgb(125 211 252 / 0.8) 0 1px, transparent 2px),
+      radial-gradient(circle at 45% 57%, rgb(249 115 22 / 0.8) 0 1px, transparent 2px),
+      radial-gradient(circle at 61% 61%, rgb(255 255 255 / 0.8) 0 1px, transparent 2px);
+    content: "";
+    mix-blend-mode: screen;
+    opacity: 0;
+    transform: scale(0.3) rotate(-3deg);
+    z-index: 3;
+  }
+
   .profile-figure:hover .profile-photo,
   .profile-figure:focus-visible .profile-photo {
     clip-path: polygon(
       0 0,
-      0 12%,
-      0 25%,
-      0 38%,
-      0 52%,
-      0 65%,
-      0 78%,
-      0 90%,
-      0 100%,
-      100% 100%,
-      100% 90%,
-      100% 78%,
-      100% 65%,
-      100% 52%,
-      100% 38%,
+      25% 0,
+      50% 0,
+      75% 0,
+      100% 0,
       100% 25%,
-      100% 12%,
-      100% 0
+      100% 50%,
+      100% 75%,
+      100% 100%,
+      75% 100%,
+      50% 100%,
+      25% 100%,
+      0 100%,
+      0 75%,
+      0 50%,
+      0 25%
     );
+    filter: blur(0) contrast(1) saturate(1);
     opacity: 1;
+  }
+
+  .profile-figure:hover .profile-portrait::after,
+  .profile-figure:focus-visible .profile-portrait::after {
+    animation: reality-fragments 820ms steps(6, end) both;
   }
 
   span {
@@ -231,6 +251,32 @@ const SOCIAL_ICONS: SocialIcon = {
   @media (prefers-reduced-motion: reduce) {
     .profile-photo {
       transition-duration: 0ms;
+    }
+
+    .profile-figure:hover .profile-portrait::after,
+    .profile-figure:focus-visible .profile-portrait::after {
+      animation: none;
+    }
+  }
+
+  @keyframes reality-fragments {
+    0% {
+      opacity: 0;
+      transform: scale(0.3) rotate(-3deg);
+    }
+
+    18% {
+      opacity: 0.9;
+    }
+
+    55% {
+      opacity: 0.55;
+      transform: scale(1.15) rotate(2deg);
+    }
+
+    100% {
+      opacity: 0;
+      transform: scale(1.8) rotate(0);
     }
   }
 </style>
