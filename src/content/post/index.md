@@ -9,4 +9,7 @@ tags: [ ]
 
 ### Hi there 👋
 
-![stats](https://github-readme-stats.vercel.app/api?username=seokh1213&show_icons=true)
+기술을 이해하기 위해 직접 구현하고, 오래 기억하기 위해 기록합니다.
+
+- [About](/) — 경력과 프로젝트
+- [GitHub](https://github.com/seokh1213) — 코드와 실험
