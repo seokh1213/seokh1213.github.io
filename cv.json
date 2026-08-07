@@ -2,11 +2,11 @@
   "basics": {
     "nickname": "seokh1213",
     "name": "홍석현",
-    "label": "주니어 서버 개발자",
+    "label": "백엔드 엔지니어",
     "image": "/assets/images/seokh1213.jpg",
     "email": "seokh1213@gmail.com",
     "url": "https://seokh1213.github.io",
-    "summary": "안녕하세요! \uD83D\uDC4B 코틀린, 자바, 스프링을 주로 다루는 주니어 서버 개발자입니다. 새로운 기술에 대한 호기심이 많아 이것저것 실험해보는 걸 좋아하고, 토니 스타크처럼 멋진 엔지니어가 되기 위해 열심히 달리고 있습니다! \uD83D\uDE80",
+    "summary": "안녕하세요. 대규모 데이터를 안정적으로 처리하고, 복잡한 도메인을 단순한 시스템으로 풀어내는 백엔드 엔지니어 홍석현입니다. Kotlin, Java, Spring을 중심으로 커머스와 콘텐츠 플랫폼을 개발하며, 최근에는 AI 도구와 개발 자동화를 직접 만들고 있습니다.",
     "location": {
       "city": "Seoul",
       "countryCode": "KO",
@@ -27,14 +27,34 @@
   },
   "work": [
     {
+      "name": "NAVER Corp",
+      "position": "백엔드 엔지니어",
+      "location_type": "On site",
+      "location": "대한민국 경기도 성남시",
+      "url": "https://www.navercorp.com/",
+      "startDate": "2025-03-17",
+      "endDate": null,
+      "summary": "네이버 쇼핑검색 카탈로그팀에서 여러 판매처의 상품을 하나의 카탈로그로 묶어 가격비교 경험을 제공하는 백엔드 시스템을 개발하고 있습니다.",
+      "responsibilities": [
+        "대규모 상품 데이터를 처리하는 카탈로그 시스템 개발 및 운영",
+        "여러 판매처의 상품을 동일 상품군으로 연결하는 서비스 고도화",
+        "안정적인 가격비교 데이터 제공을 위한 백엔드 시스템 개선"
+      ],
+      "skills": [
+        "Kotlin",
+        "Java",
+        "Spring"
+      ]
+    },
+    {
       "name": "카카오엔터테인먼트",
       "position": "백엔드 개발자",
       "location_type": "On site",
       "location": "경기도 성남시 판교",
       "url": "https://kakaoent.com/",
       "startDate": "2021-12-01",
-      "endDate": null,
-      "summary": "카카오페이지 서비스의 백엔드 개발을 담당하고 있습니다. 새로운 기술을 도입하고, 서비스의 안정성을 높이기 위해 노력하고 있습니다.",
+      "endDate": "2025-03-16",
+      "summary": "카카오페이지 서비스의 백엔드 개발을 담당했습니다. 새로운 기술을 도입하고 서비스 안정성을 높이는 데 집중했습니다.",
       "responsibilities": [
         "카카오페이지의 계정 및 인증 시스템 개발 및 유지보수",
         "검색 및 콘텐츠 서빙 시스템 최적화 및 성능 개선",
@@ -252,16 +272,6 @@
       ]
     }
   ],
-  "languages": [
-    {
-      "language": "English",
-      "fluency": "Native speaker"
-    },
-    {
-      "language": "Spanish",
-      "fluency": "中"
-    }
-  ],
   "interests": [
     {
       "name": "Technology",
@@ -271,19 +281,42 @@
       ]
     }
   ],
-  "references": [
-    {
-      "name": "Jane Smith",
-      "reference": "Reference…"
-    }
-  ],
   "projects": [
     {
-      "name": "Lol Cooldown",
-      "isActive": true,
-      "description": "롤 챔피언 스킬 쿨 타임 표시기",
+      "name": "AI Chat Workspace",
+      "isActive": false,
+      "description": "원천 데이터와 AI 채팅 편집을 결합한 애플리케이션 설계·구현 워크스페이스",
       "highlights": [
-        "React.js & Styled Components"
+        "Kotlin, Spring, React, TypeScript",
+        "스트리밍 응답, AI operation, 체크포인트와 롤백"
+      ],
+      "github": "https://github.com/seokh1213/ai-chat-workspace"
+    },
+    {
+      "name": "Kotlin Lab",
+      "isActive": false,
+      "description": "Kotlin 구현 패턴과 코딩 챌린지, 재사용 가능한 에이전트 스킬 모음",
+      "highlights": [
+        "Kotlin, Gradle, Agent Skills"
+      ],
+      "github": "https://github.com/seokh1213/kotlin-lab"
+    },
+    {
+      "name": "Volume Tap",
+      "isActive": true,
+      "description": "볼륨 조절을 지원하지 않는 macOS 출력 기기를 위한 메뉴 막대 앱",
+      "highlights": [
+        "Swift, Core Audio, Accessibility"
+      ],
+      "url": "https://github.com/seokh1213/volume-tap/releases/latest",
+      "github": "https://github.com/seokh1213/volume-tap"
+    },
+    {
+      "name": "LoL Cooldown",
+      "isActive": true,
+      "description": "리그 오브 레전드 챔피언의 스킬 쿨타임과 기본 스탯 비교 도구",
+      "highlights": [
+        "React 19, TypeScript, Tailwind CSS"
       ],
       "url": "https://seokh1213.github.io/cooldown",
       "github": "https://github.com/seokh1213/cooldown"
