@@ -134,14 +134,33 @@ const SOCIAL_ICONS: SocialIcon = {
   }
 
   .profile-photo {
+    clip-path: polygon(
+      49% 0,
+      48% 12%,
+      51% 25%,
+      47% 38%,
+      50% 52%,
+      46% 65%,
+      50% 78%,
+      48% 90%,
+      49% 100%,
+      51% 100%,
+      52% 90%,
+      50% 78%,
+      54% 65%,
+      50% 52%,
+      53% 38%,
+      49% 25%,
+      52% 12%,
+      51% 0
+    );
+    opacity: 0;
     z-index: 2;
-    mask-image: radial-gradient(circle, black 0 46%, rgb(0 0 0 / 0.7) 54%, transparent 68%);
-    mask-position: 50% 45%;
-    mask-repeat: no-repeat;
-    mask-size: 0% 0%;
     object-position: 62% center;
     transform: scale(1.02);
-    transition: mask-size 720ms cubic-bezier(0.22, 1, 0.36, 1);
+    transition:
+      clip-path 760ms cubic-bezier(0.4, 0, 0.2, 1),
+      opacity 90ms ease-out;
   }
 
   .profile-mask {
@@ -150,29 +169,29 @@ const SOCIAL_ICONS: SocialIcon = {
     transform: scale(1.01);
   }
 
-  .profile-portrait::after {
-    @apply pointer-events-none absolute inset-0 rounded-2xl;
-    background: radial-gradient(
-      circle at 50% 45%,
-      transparent 0 28%,
-      rgb(186 230 253 / 0.75) 34%,
-      rgb(249 115 22 / 0.25) 39%,
-      transparent 48%
-    );
-    content: "";
-    opacity: 0;
-    transform: scale(0.2);
-    z-index: 3;
-  }
-
   .profile-figure:hover .profile-photo,
   .profile-figure:focus-visible .profile-photo {
-    mask-size: 230% 230%;
-  }
-
-  .profile-figure:hover .profile-portrait::after,
-  .profile-figure:focus-visible .profile-portrait::after {
-    animation: profile-dissolve 720ms ease-out both;
+    clip-path: polygon(
+      0 0,
+      0 12%,
+      0 25%,
+      0 38%,
+      0 52%,
+      0 65%,
+      0 78%,
+      0 90%,
+      0 100%,
+      100% 100%,
+      100% 90%,
+      100% 78%,
+      100% 65%,
+      100% 52%,
+      100% 38%,
+      100% 25%,
+      100% 12%,
+      100% 0
+    );
+    opacity: 1;
   }
 
   span {
@@ -212,27 +231,6 @@ const SOCIAL_ICONS: SocialIcon = {
   @media (prefers-reduced-motion: reduce) {
     .profile-photo {
       transition-duration: 0ms;
-    }
-
-    .profile-figure:hover .profile-portrait::after,
-    .profile-figure:focus-visible .profile-portrait::after {
-      animation: none;
-    }
-  }
-
-  @keyframes profile-dissolve {
-    0% {
-      opacity: 0;
-      transform: scale(0.2);
-    }
-
-    35% {
-      opacity: 0.8;
-    }
-
-    100% {
-      opacity: 0;
-      transform: scale(2.1);
     }
   }
 </style>
