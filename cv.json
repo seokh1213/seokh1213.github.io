@@ -43,7 +43,10 @@
       "skills": [
         "Kotlin",
         "Java",
-        "Spring"
+        "Spring",
+        "Kafka",
+        "Hadoop",
+        "Spark"
       ]
     },
     {
@@ -177,6 +180,31 @@
       ]
     },
     {
+      "name": "Kafka",
+      "level": "中",
+      "keywords": [
+        "Messaging",
+        "Streaming",
+        "Distributed Systems"
+      ]
+    },
+    {
+      "name": "Hadoop",
+      "level": "中",
+      "keywords": [
+        "Big Data",
+        "Distributed Processing"
+      ]
+    },
+    {
+      "name": "Spark",
+      "level": "中",
+      "keywords": [
+        "Big Data",
+        "Distributed Processing"
+      ]
+    },
+    {
       "name": "HTML",
       "level": "下",
       "keywords": [
@@ -300,16 +328,6 @@
         "Kotlin, Gradle, Agent Skills"
       ],
       "github": "https://github.com/seokh1213/kotlin-lab"
-    },
-    {
-      "name": "Volume Tap",
-      "isActive": true,
-      "description": "볼륨 조절을 지원하지 않는 macOS 출력 기기를 위한 메뉴 막대 앱",
-      "highlights": [
-        "Swift, Core Audio, Accessibility"
-      ],
-      "url": "https://github.com/seokh1213/volume-tap/releases/latest",
-      "github": "https://github.com/seokh1213/volume-tap"
     },
     {
       "name": "LoL Cooldown",
