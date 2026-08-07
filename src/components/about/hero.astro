@@ -72,8 +72,20 @@ const SOCIAL_ICONS: SocialIcon = {
         }
       </footer>
     </div>
-    <figure class="print:hidden w-fit relative">
-      <img class="shadow-lg shadow-skin-hue/20" src={image} alt={name}/>
+    <figure
+      class="profile-figure print:hidden w-fit relative"
+      tabindex="0"
+      aria-label={`${name}의 프로필 이미지. 마우스를 올리거나 포커스하면 원본 사진이 나타납니다.`}
+    >
+      <div class="profile-portrait shadow-lg shadow-skin-hue/20">
+        <img
+          class="profile-photo"
+          src="/assets/images/seokh1213.jpg"
+          alt=""
+          aria-hidden="true"
+        />
+        <img class="profile-mask" src={image} alt={name}/>
+      </div>
       <div class="pointer-events-none absolute -inset-2">
         <div
           class="absolute -inset-y-8 right-0 w-px bg-skin-hue/50 [mask-image:linear-gradient(to_top,transparent,white_4rem,white_calc(100%-4rem),transparent)]"></div>
@@ -103,8 +115,64 @@ const SOCIAL_ICONS: SocialIcon = {
     @apply text-balance text-base text-skin-muted print:text-lg;
   }
 
-  img {
-    @apply aspect-square w-32 rounded-2xl bg-cover;
+  .profile-figure {
+    @apply cursor-pointer rounded-2xl outline-none;
+  }
+
+  .profile-figure:focus-visible {
+    @apply ring-2 ring-skin-hue ring-offset-4 ring-offset-white dark:ring-offset-neutral-950;
+  }
+
+  .profile-portrait {
+    @apply relative aspect-square w-32 overflow-hidden rounded-2xl;
+    isolation: isolate;
+  }
+
+  .profile-portrait img {
+    @apply absolute inset-0 size-full;
+    object-fit: cover;
+  }
+
+  .profile-photo {
+    z-index: 2;
+    mask-image: radial-gradient(circle, black 0 46%, rgb(0 0 0 / 0.7) 54%, transparent 68%);
+    mask-position: 50% 45%;
+    mask-repeat: no-repeat;
+    mask-size: 0% 0%;
+    object-position: 62% center;
+    transform: scale(1.02);
+    transition: mask-size 720ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .profile-mask {
+    z-index: 1;
+    object-position: center;
+    transform: scale(1.01);
+  }
+
+  .profile-portrait::after {
+    @apply pointer-events-none absolute inset-0 rounded-2xl;
+    background: radial-gradient(
+      circle at 50% 45%,
+      transparent 0 28%,
+      rgb(186 230 253 / 0.75) 34%,
+      rgb(249 115 22 / 0.25) 39%,
+      transparent 48%
+    );
+    content: "";
+    opacity: 0;
+    transform: scale(0.2);
+    z-index: 3;
+  }
+
+  .profile-figure:hover .profile-photo,
+  .profile-figure:focus-visible .profile-photo {
+    mask-size: 230% 230%;
+  }
+
+  .profile-figure:hover .profile-portrait::after,
+  .profile-figure:focus-visible .profile-portrait::after {
+    animation: profile-dissolve 720ms ease-out both;
   }
 
   span {
@@ -138,6 +206,33 @@ const SOCIAL_ICONS: SocialIcon = {
 
     figure {
       @apply md:mx-auto;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .profile-photo {
+      transition-duration: 0ms;
+    }
+
+    .profile-figure:hover .profile-portrait::after,
+    .profile-figure:focus-visible .profile-portrait::after {
+      animation: none;
+    }
+  }
+
+  @keyframes profile-dissolve {
+    0% {
+      opacity: 0;
+      transform: scale(0.2);
+    }
+
+    35% {
+      opacity: 0.8;
+    }
+
+    100% {
+      opacity: 0;
+      transform: scale(2.1);
     }
   }
 </style>

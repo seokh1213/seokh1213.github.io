@@ -48,6 +48,37 @@
   border-radius: 30px;
 }
 
+.prose .profile-intro-banner {
+  margin-block: 1.5rem 1rem;
+}
+
+.prose .profile-intro-banner img {
+  margin: 0;
+}
+
+.prose .profile-intro-links,
+.prose .profile-intro-stack {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.prose .profile-intro-links {
+  margin-block: 1rem 2rem;
+}
+
+.prose .profile-intro-links img,
+.prose .profile-intro-stack img {
+  border-radius: 0;
+  display: inline-block;
+  margin: 0;
+}
+
+.prose .profile-intro-stack {
+  margin-block: 1rem;
+}
+
 #sun,
 #moon {
   transform: translate3d(0, 0, 0);
