@@ -134,84 +134,22 @@ const SOCIAL_ICONS: SocialIcon = {
   }
 
   .profile-photo {
-    clip-path: polygon(
-      48% 41%,
-      51% 42%,
-      54% 43%,
-      53% 45%,
-      56% 48%,
-      52% 49%,
-      53% 54%,
-      50% 51%,
-      47% 54%,
-      48% 49%,
-      43% 50%,
-      46% 46%,
-      44% 43%,
-      48% 44%,
-      46% 40%,
-      49% 43%
-    );
-    filter: blur(3px) contrast(1.35) saturate(1.5);
-    opacity: 0;
-    z-index: 2;
+    z-index: 1;
     object-position: 62% center;
     transform: scale(1.02);
-    transition:
-      clip-path 820ms steps(10, end),
-      filter 640ms ease-out,
-      opacity 100ms ease-out;
   }
 
   .profile-mask {
-    z-index: 1;
+    opacity: 1;
+    z-index: 2;
     object-position: center;
     transform: scale(1.01);
+    transition: opacity 240ms ease-out;
   }
 
-  .profile-portrait::after {
-    @apply pointer-events-none absolute inset-0 rounded-2xl;
-    background:
-      linear-gradient(90deg, transparent 46%, rgb(125 211 252 / 0.85) 47% 48%, transparent 49%),
-      linear-gradient(90deg, transparent 52%, rgb(249 115 22 / 0.65) 53% 54%, transparent 55%),
-      radial-gradient(circle at 42% 38%, rgb(255 255 255 / 0.9) 0 1px, transparent 2px),
-      radial-gradient(circle at 58% 43%, rgb(125 211 252 / 0.8) 0 1px, transparent 2px),
-      radial-gradient(circle at 45% 57%, rgb(249 115 22 / 0.8) 0 1px, transparent 2px),
-      radial-gradient(circle at 61% 61%, rgb(255 255 255 / 0.8) 0 1px, transparent 2px);
-    content: "";
-    mix-blend-mode: screen;
+  .profile-figure:hover .profile-mask,
+  .profile-figure:focus-visible .profile-mask {
     opacity: 0;
-    transform: scale(0.3) rotate(-3deg);
-    z-index: 3;
-  }
-
-  .profile-figure:hover .profile-photo,
-  .profile-figure:focus-visible .profile-photo {
-    clip-path: polygon(
-      0 0,
-      25% 0,
-      50% 0,
-      75% 0,
-      100% 0,
-      100% 25%,
-      100% 50%,
-      100% 75%,
-      100% 100%,
-      75% 100%,
-      50% 100%,
-      25% 100%,
-      0 100%,
-      0 75%,
-      0 50%,
-      0 25%
-    );
-    filter: blur(0) contrast(1) saturate(1);
-    opacity: 1;
-  }
-
-  .profile-figure:hover .profile-portrait::after,
-  .profile-figure:focus-visible .profile-portrait::after {
-    animation: reality-fragments 820ms steps(6, end) both;
   }
 
   span {
@@ -249,34 +187,8 @@ const SOCIAL_ICONS: SocialIcon = {
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .profile-photo {
+    .profile-mask {
       transition-duration: 0ms;
-    }
-
-    .profile-figure:hover .profile-portrait::after,
-    .profile-figure:focus-visible .profile-portrait::after {
-      animation: none;
-    }
-  }
-
-  @keyframes reality-fragments {
-    0% {
-      opacity: 0;
-      transform: scale(0.3) rotate(-3deg);
-    }
-
-    18% {
-      opacity: 0.9;
-    }
-
-    55% {
-      opacity: 0.55;
-      transform: scale(1.15) rotate(2deg);
-    }
-
-    100% {
-      opacity: 0;
-      transform: scale(1.8) rotate(0);
     }
   }
 </style>
