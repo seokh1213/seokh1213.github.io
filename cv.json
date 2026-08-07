@@ -46,7 +46,8 @@
         "Spring",
         "Kafka",
         "Hadoop",
-        "Spark"
+        "Spark",
+        "PostgreSQL"
       ]
     },
     {
@@ -108,6 +109,12 @@
   ],
   "certificates": [
     {
+      "name": "정보처리기사",
+      "date": "2025-12-24",
+      "issuer": "과학기술정보통신부-한국산업인력공단",
+      "url": "https://www.q-net.or.kr/crf005.do?id=crf00503&jmCd=1320"
+    },
+    {
       "name": "정보처리산업기사",
       "date": "2019-12-02",
       "issuer": "과학기술정보통신부-한국산업인력공단",
@@ -131,6 +138,16 @@
     },
     {
       "name": "MySQL",
+      "level": "中",
+      "keywords": [
+        "Databases",
+        "SQL",
+        "Data Storage",
+        "Backend"
+      ]
+    },
+    {
+      "name": "PostgreSQL",
       "level": "中",
       "keywords": [
         "Databases",

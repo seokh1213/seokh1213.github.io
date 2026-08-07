@@ -6,17 +6,21 @@ import Flutter from "@/icons/flutter.astro";
 import Git from "@/icons/git.astro";
 import Github from "@/icons/github.astro";
 import Gitlab from "@/icons/gitlab.astro";
+import Hadoop from "@/icons/hadoop.astro";
 import HTML from "@/icons/html.astro";
 import Java from "@/icons/java.astro";
 import JavaScript from "@/icons/javascript.astro";
+import Kafka from "@/icons/kafka.astro";
 import Kotlin from "@/icons/kotlin.astro";
 import MongoDB from "@/icons/mongodb.astro";
 import Next from "@/icons/next.astro";
 import Node from "@/icons/node.astro";
+import PostgreSQL from "@/icons/postgresql.astro";
 import Python from "@/icons/python.astro";
 import PyTorch from "@/icons/pytorch.astro";
 import React from "@/icons/react.astro";
 import Redis from "@/icons/redis.astro";
+import Spark from "@/icons/spark.astro";
 import Spring from "@/icons/spring.astro";
 import MySQL from "@/icons/sql.astro";
 import Swift from "@/icons/swift.astro";
@@ -40,6 +44,10 @@ const SKILLS_ICONS = {
 	SwiftUI,
 	Kotlin,
 	Java,
+	Kafka,
+	Hadoop,
+	Spark,
+	PostgreSQL,
 	Flutter,
 	Figma,
 	Gitlab: Gitlab,
