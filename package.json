@@ -8,28 +8,31 @@
     "build": "astro check && astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "check": "biome check --apply-unsafe ."
+    "check": "biome check astro.config.mjs src/content.config.js src/assets/js/main.js src/components/about/skill-icons.js src/pages/sitemap.xml.ts",
+    "format": "biome check --write astro.config.mjs src/content.config.js src/assets/js/main.js src/components/about/skill-icons.js src/pages/sitemap.xml.ts",
+    "ci": "npm run check && npm run build"
   },
   "devDependencies": {
-    "@astrojs/check": "^0.9.4",
-    "@astrojs/tailwind": "^6.0.0",
-    "@biomejs/biome": "1.7.3",
-    "@tailwindcss/typography": "^0.5.13",
-    "astro": "^5.2.3",
-    "astro-font-picker": "^0.2.1",
-    "hotkeypad": "0.1.0",
-    "prettier": "^3.4.2",
-    "prettier-plugin-astro": "^0.14.1",
-    "prettier-plugin-tailwindcss": "^0.6.5",
-    "tailwindcss": "^3.4.3",
-    "typescript": "^5.4.5"
-  },
-  "packageManager": "pnpm@9.12.2",
-  "dependencies": {
-    "@astrojs/alpinejs": "^0.4.3",
-    "@astrojs/ts-plugin": "^1.10.4",
+    "@astrojs/check": "^0.9.10",
+    "@astrojs/ts-plugin": "^1.10.10",
+    "@biomejs/biome": "^2.5.7",
+    "@tailwindcss/typography": "^0.5.20",
+    "@tailwindcss/vite": "^4.3.3",
     "@types/alpinejs": "^3.13.11",
-    "alpinejs": "^3.14.8",
+    "astro": "^7.2.0",
+    "astro-font-picker": "^0.2.2",
+    "hotkeypad": "^1.0.2",
+    "prettier": "^3.9.6",
+    "prettier-plugin-astro": "^0.14.1",
+    "prettier-plugin-tailwindcss": "^0.8.1",
+    "tailwindcss": "^4.3.3",
+    "typescript": "^6.0.3",
+    "vite": "^8.2.1",
+    "zod": "^4.3.6"
+  },
+  "dependencies": {
+    "@astrojs/alpinejs": "^1.0.0",
+    "alpinejs": "^3.15.12",
     "classnames": "^2.5.1"
   }
 }

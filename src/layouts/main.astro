@@ -2,6 +2,7 @@
 import Footer from "@/components/common/footer.astro";
 import Header from "@/components/common/header.astro";
 import SquareLines from "@/components/common/square-lines.astro";
+import "@/styles/global.css";
 
 import {basics} from "@cv";
 
@@ -53,9 +54,6 @@ const {summary, url} = basics;
 
   <!-- Styles -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Itim"/>
-  <link rel="stylesheet" href="/themes/theme.css"/>
-  <link rel="stylesheet" href="/themes/main.css"/>
-
   <link rel="manifest" href="/manifest.json"/>
 
   <!-- Favicons -->
@@ -70,7 +68,7 @@ const {summary, url} = basics;
 
   <meta name="google-site-verification" content="3OuAaGtQeWLrNCcc5YC8c9EhNeTPiBCywI8xnzjgcvI"/>
   <meta name="google-adsense-account" content="ca-pub-3498618403190718">
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3498618403190718"
+  <script is:inline async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3498618403190718"
           crossorigin="anonymous"/>
 </head>
 <body class="relative antialiased bg-white dark:bg-neutral-950">

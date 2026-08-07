@@ -1,11 +1,11 @@
 ---
-import type {Post, Content} from "@/types";
+import type {CollectionEntry} from "astro:content";
 import cn from "classnames"
 
 interface FolderItem {
   name: string;
   path: string | null;
-  post: Content<Post>;
+  post: CollectionEntry<"post">;
   children: FolderItem[];
 }
 
@@ -45,7 +45,7 @@ const hasCurrentPostRecursive = (items: FolderItem[]): boolean => {
 function toPascalCase(str: string) {
   return str.toLowerCase()
     .replace(/^[a-z]/, firstChar => firstChar.toUpperCase())
-    .replace(/[^a-zA-Z0-9]+(.)/g, (m, chr) => chr.toUpperCase());
+    .replace(/[^a-zA-Z0-9]+(.)/g, (_, chr) => chr.toUpperCase());
 }
 ---
 

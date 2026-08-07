@@ -1,0 +1,110 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme inline {
+  --color-skin-base: rgb(var(--color-text-base));
+  --color-skin-muted: rgb(var(--color-text-muted));
+  --color-skin-inverted: rgb(var(--color-text-inverted));
+  --color-skin-fill: rgb(var(--color-fill));
+  --color-skin-button-accent: rgb(var(--color-button-accent));
+  --color-skin-button-accent-hover: rgb(var(--color-button-accent-hover));
+  --color-skin-button-muted: rgb(var(--color-button-muted));
+  --color-skin-hue: rgb(var(--color));
+}
+
+:root {
+  --pattern-fg: color-mix(in oklab, var(--color-gray-950) 5%, transparent);
+  --pattern-fg-dark: color-mix(in oklab, var(--color-white) 10%, transparent);
+  --dark-color: #030712;
+  --color-text-base: 0 0 0;
+  --color-text-muted: 120 120 120;
+  --color-text-inverted: 255 255 255;
+  --color-fill: 245 245 245;
+  --color: 249 115 22;
+  --color-button-accent: 249 115 22;
+  --color-button-accent-hover: 55 55 55;
+  --color-button-muted: 244 239 238;
+  --primary-text-color: color(srgb 0.114902 0.115843 0.133725);
+  --secondary-text-color: color(srgb 0.114902 0.115843 0.133725 / 0.72);
+  --primary-text-color-dark: color(srgb 1 1 1);
+  --secondary-text-color-dark: color(srgb 1 1 1 / 0.72);
+  --tw-content: "";
+}
+
+.dark {
+  --color-text-base: 255 255 255;
+  --color-text-muted: 150 150 150;
+  --color-text-inverted: 255 255 255;
+  --color-fill: 18 18 18;
+  --color: 227 77 10;
+  --color-button-accent: 227 77 10;
+  --color-button-accent-hover: 231 121 43;
+  --color-button-muted: 26 26 26;
+}
+
+.prose img {
+  border-radius: 30px;
+}
+
+#sun,
+#moon {
+  transform: translate3d(0, 0, 0);
+}
+
+#darkToggle:hover #sun,
+#darkToggle:hover #moon {
+  transform: translate3d(0, 10px, 0);
+}
+
+html.dark #darkToggle:hover .horizon {
+  border-color: #718096 !important;
+}
+
+html.dark {
+  color-scheme: dark;
+}
+
+.horizon .setting {
+  animation: 1s ease 0s 1 setting;
+}
+
+.horizon .rising {
+  animation: 1s ease 0s 1 rising;
+}
+
+@keyframes setting {
+  0% {
+    transform: translate3d(0, 10px, 0);
+  }
+
+  40% {
+    transform: translate3d(0, -2px, 0);
+  }
+
+  to {
+    transform: translate3d(0, 30px, 0);
+  }
+}
+
+@keyframes rising {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 30px, 0);
+  }
+
+  40% {
+    opacity: 1;
+    transform: translate3d(0, -2px, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 10px, 0);
+  }
+}
+
+.dark img.logo {
+  content: url("/favicon/favicon-white.png");
+}

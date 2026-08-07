@@ -73,7 +73,7 @@ const SOCIAL_ICONS: SocialIcon = {
       </footer>
     </div>
     <figure class="print:hidden w-fit relative">
-      <img class="shadow-lg shadow-skin-hues" src={image} alt={name}/>
+      <img class="shadow-lg shadow-skin-hue/20" src={image} alt={name}/>
       <div class="pointer-events-none absolute -inset-2">
         <div
           class="absolute -inset-y-8 right-0 w-px bg-skin-hue/50 [mask-image:linear-gradient(to_top,transparent,white_4rem,white_calc(100%-4rem),transparent)]"></div>
@@ -89,6 +89,8 @@ const SOCIAL_ICONS: SocialIcon = {
 </Section>
 
 <style>
+  @reference "../../styles/global.css";
+
   .info {
     @apply flex flex-col gap-1 pr-8 print:gap-0 print:pr-0;
   }
@@ -106,11 +108,11 @@ const SOCIAL_ICONS: SocialIcon = {
   }
 
   span {
-    @apply flex items-center gap-1 text-xs text-skin-hue ;
+    @apply flex items-center gap-1 text-xs text-skin-hue;
   }
 
   footer {
-    @apply mt-2 flex gap-1 text-sm ;
+    @apply mt-2 flex gap-1 text-sm;
   }
 
   footer a, footer button {

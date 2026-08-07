@@ -7,7 +7,7 @@ tags: [ spring ]
 published: true
 ---
 
-```text:3줄 요약
+```text
 - IoC 기존 절차지향과 다르게 부품을 받아서 사용
 - DI 부품을 주는 행위. 주는 방법은 생성자, reflection, setter
 - IoC 컨테이너, DI 컨테이너. 객체 생성시 디펜던시를 넣어주는 객체.

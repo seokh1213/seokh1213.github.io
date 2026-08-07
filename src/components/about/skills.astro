@@ -11,11 +11,11 @@ import {skills} from "@cv";
     {
       skills.map(({name}) => {
         const iconName = name === "Next.js" ? "Next" : name;
-        const Icon = SkillIcons[iconName];
+        const Icon = SkillIcons[iconName as keyof typeof SkillIcons];
 
         return (
           <li
-            class="border-skin-hue/20s bg-skin-button-accent/20s borders border-solids flex items-center gap-1 rounded-md px-2 py-0.5 text-xs text-skin-muted print:border-none print:bg-transparent print:p-0 print:text-zinc-800">
+            class="border-skin-hue/20 bg-skin-button-accent/20 flex items-center gap-1 rounded-md border border-solid px-2 py-0.5 text-xs text-skin-muted print:border-none print:bg-transparent print:p-0 print:text-zinc-800">
             {Icon &&
               <Icon/>} <span>{name}</span>
           </li>

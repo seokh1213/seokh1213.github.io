@@ -1,11 +1,11 @@
 ---
 import {getCollection, render} from "astro:content";
+import type {CollectionEntry} from "astro:content";
 import Layout from "@/layouts/main.astro";
 import FolderStructure from "@/components/posts/folder-structure.astro";
 import Separator from "@/components/posts/separator.astro"
 import TableOfContents from "@/components/posts/toc.astro";
 import {basics} from "@cv";
-import type {Post, Content} from "@/types";
 
 const {nickname} = basics;
 
@@ -27,12 +27,27 @@ export async function getStaticPaths() {
   ];
 }
 
-const {post} = Astro.props;
+type PostEntry = CollectionEntry<"post">;
+
+interface FolderItem {
+  name: string;
+  path: string | null;
+  post: PostEntry;
+  children: FolderItem[];
+}
+
+interface MarkdownHeading {
+  depth: number;
+  slug: string;
+  text: string;
+}
+
+const {post} = Astro.props as {post?: PostEntry};
 const {slug} = Astro.params;
 
 // 폴더 구조 변환 함수
-function generateFolderStructure(posts) {
-  const structure = [];
+function generateFolderStructure(posts: PostEntry[]): FolderItem[] {
+  const structure: FolderItem[] = [];
 
   posts.forEach((post) => {
     const {id} = post;
@@ -66,18 +81,20 @@ const indexPost = posts.find((post) => post.id === "index");
 
 const currentPost = slug ? post : indexPost;
 
-let Content = undefined;
-let headings = [];
-if (currentPost) {
-  const rendered = await render(currentPost);
-  Content = rendered.Content;
-  headings = rendered.headings;
+if (!indexPost || !currentPost) {
+  throw new Error("Posts collection requires a published index.md entry.");
 }
+
+let Content = undefined;
+let headings: MarkdownHeading[] = [];
+const rendered = await render(currentPost);
+Content = rendered.Content;
+headings = rendered.headings;
 
 function toPascalCase(str: string) {
   return str.toLowerCase()
     .replace(/^[a-z]/, firstChar => firstChar.toUpperCase())
-    .replace(/[^a-zA-Z0-9]+(.)/g, (m, chr) => chr.toUpperCase());
+    .replace(/[^a-zA-Z0-9]+(.)/g, (_, chr) => chr.toUpperCase());
 }
 
 const pathArray = [...currentPost.id.split("/").slice(0, -1).map(toPascalCase), currentPost.data.title];
