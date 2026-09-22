@@ -8,9 +8,10 @@
     "build": "astro check && astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "check": "biome check astro.config.mjs src/content.config.js src/assets/js/main.js src/components/about/skill-icons.js src/pages/sitemap.xml.ts",
-    "format": "biome check --write astro.config.mjs src/content.config.js src/assets/js/main.js src/components/about/skill-icons.js src/pages/sitemap.xml.ts",
-    "ci": "npm run check && npm run build"
+    "check": "biome check astro.config.mjs src/content.config.js src/assets/js/main.js src/components/about/skill-icons.js src/lib/sitemap.ts src/pages/sitemap.xml.ts src/pages/sitemap.txt.ts tests/sitemap.test.mjs",
+    "format": "biome check --write astro.config.mjs src/content.config.js src/assets/js/main.js src/components/about/skill-icons.js src/lib/sitemap.ts src/pages/sitemap.xml.ts src/pages/sitemap.txt.ts tests/sitemap.test.mjs",
+    "test": "npm run build && node --test tests/sitemap.test.mjs",
+    "ci": "npm run check && npm test"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.10",

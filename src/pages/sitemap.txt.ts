@@ -1,6 +1,6 @@
 import { getCollection } from "astro:content";
 import type { APIRoute } from "astro";
-import { buildSitemapUrls, renderXmlSitemap } from "@/lib/sitemap";
+import { buildSitemapUrls, renderTextSitemap } from "@/lib/sitemap";
 
 export const GET: APIRoute = async () => {
 	const posts = (await getCollection("post")).filter(
@@ -8,9 +8,9 @@ export const GET: APIRoute = async () => {
 	);
 	const urls = buildSitemapUrls(posts.map((post) => post.id));
 
-	return new Response(renderXmlSitemap(urls), {
+	return new Response(renderTextSitemap(urls), {
 		headers: {
-			"Content-Type": "application/xml; charset=utf-8",
+			"Content-Type": "text/plain; charset=utf-8",
 		},
 	});
 };
